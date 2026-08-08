@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+# TODO: reemplaza DOMINIO por tu dominio real
+Sitemap: DOMINIO/sitemap.xml

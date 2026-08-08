@@ -1,0 +1,141 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<div
+  aria-label="Options"
+  class="flex group/options flex-wrap justify-evenly sm:h-40 sm:w-40 w-full h-min sm:flex-col rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
+>
+  <button
+    data-ccursor
+    id="themeSwitch"
+    type="button"
+    aria-label="Toggle dark mode"
+    class="flex flex-col sm:basis-1/2 items-center justify-center rounded-md hover:cursor-none"
+  >
+    <Icon
+      name='ri:moon-fill'
+      class='hidden dark:block'
+      width={28}
+      height={28}
+    />
+    <Icon name='ri:sun-fill' class='dark:hidden' width={28} height={28} />
+    <span class="hidden dark:block font-mono text-sm font-bold">Light mode</span>
+    <span class="dark:hidden font-mono text-sm font-bold">Dark mode</span>
+  </button>
+  <a
+    data-ccursor
+    href="/resume.pdf"
+    target="_blank"
+    rel="noreferrer noopener"
+    aria-label="Print resume (opens in a new tab)"
+    class="flex flex-col sm:basis-1/2 items-center justify-center rounded-md hover:cursor-none"
+  >
+    <Icon name='ri:file-pdf-line' width={28} height={28} />
+    <span class="font-mono text-sm font-bold">Print resume</span>
+  </a>
+</div>
+
+<style>
+  :global(.dark) {
+    color-scheme: dark;
+  }
+</style>
+
+<script>
+  let isDark = document.documentElement.classList.contains('dark')
+
+  function toggleDark(event: MouseEvent) {
+    const isAppearanceTransition =
+      'startViewTransition' in document &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (!isAppearanceTransition) {
+      isDark = !isDark
+      updateTheme()
+      return
+    }
+
+    const x = event.clientX
+    const y = event.clientY
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    )
+
+    // @ts-ignore
+    const transition = document.startViewTransition(async () => {
+      isDark = !isDark
+      updateTheme()
+    })
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ]
+      document.documentElement.animate(
+        {
+          clipPath: isDark ? [...clipPath].reverse() : clipPath,
+        },
+        {
+          duration: 400,
+          easing: 'ease-out',
+          pseudoElement: isDark
+            ? '::view-transition-old(root)'
+            : '::view-transition-new(root)',
+        }
+      )
+    })
+  }
+
+  function updateTheme() {
+    document.documentElement.classList.toggle('dark', isDark)
+    localStorage.setItem('theme', isDark ? 'dark' : 'light')
+  }
+
+  const themeSwitchButton = document.getElementById('themeSwitch')
+  if (themeSwitchButton) {
+    themeSwitchButton.addEventListener('click', toggleDark)
+  }
+
+  // Initialize theme based on user preference or system setting
+  if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    isDark = true
+    updateTheme()
+  }
+
+  // Listen for changes in system color scheme
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', e => {
+      if (!('theme' in localStorage)) {
+        isDark = e.matches
+        updateTheme()
+      }
+    })
+</script>
+
+<style is:global>
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+  ::view-transition-new(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-old(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-new(root) {
+    z-index: 1;
+  }
+</style>
