@@ -1,9 +1,13 @@
 ---
 import '../globals.css';
-import CV from "@cv";
+import type { CV } from "@/lib/cv-types";
+import type { UIStrings, LangCode } from "@/lib/i18n";
 import BackgroundArt from "../components/BackgroundArt.astro"
 
 interface Props {
+  lang: LangCode;
+  data: CV;
+  ui: UIStrings;
   title: string;
   description?: string;
   image?: string;
@@ -11,19 +15,18 @@ interface Props {
   keywords?: string[];
 }
 
+const { lang, data: CV, ui } = Astro.props;
 const { url, name, location } = CV.basics;
 const { city, region, countryCode } = location;
 
 const { 
   title,
   image = CV.basics.image,
-  canonicalURL = CV.basics.url,
+  canonicalURL = `${url.replace(/\/$/, "")}/${lang}/`,
   keywords = [
     name,
     CV.basics.label,
-    "Software Developer",
-    "Web Developer",
-    "Portfolio",
+    ...ui.seo.keywords,
     city,
     region,
     countryCode,
@@ -31,7 +34,7 @@ const {
 } = Astro.props;
 
 // Create a more detailed description
-const detailedDescription = `${name} - ${CV.basics.label}. Explore my portfolio, projects, and contact info.`;
+const detailedDescription = ui.seo.description(name, CV.basics.label);
 
 // Create structured data for better SEO
 const structuredData = {
@@ -39,9 +42,9 @@ const structuredData = {
   "@type": "Person",
   "name": name,
   "jobTitle": CV.basics.label,
-  "url": url,
+  "url": `${url.replace(/\/$/, "")}/${lang}/`,
   "email": CV.basics.email,
-  "alumniOf": (CV as any).education?.[0]?.institution,
+  "alumniOf": CV.education?.[0]?.institution,
   "knowsLanguage": CV.languages?.map(lang => lang.language),
   "sameAs": CV.basics.profiles.map(profile => profile.url),
   "image": image,
@@ -67,33 +70,33 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Home",
-      "item": url
+      "name": ui.seo.home,
+      "item": `${url.replace(/\/$/, "")}/${lang}/`
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Projects",
-      "item": `${url}#projects`
+      "name": ui.seo.projects,
+      "item": `${url.replace(/\/$/, "")}/${lang}/#projects`
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "About",
-      "item": `${url}#about`
+      "name": ui.seo.about,
+      "item": `${url.replace(/\/$/, "")}/${lang}/#about`
     },
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "Contact",
-      "item": `${url}#contact`
+      "name": ui.seo.contact,
+      "item": `${url.replace(/\/$/, "")}/${lang}/#contact`
     }
   ]
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={ui.seo.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -119,12 +122,12 @@ const breadcrumbSchema = {
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={url} />
+    <meta property="og:url" content={`${url.replace(/\/$/, "")}/${lang}/`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={detailedDescription} />
     <meta property="og:image" content={image} />
-    <meta property="og:site_name" content={`${name}'s Portfolio`} />
-    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content={ui.seo.siteName(name)} />
+    <meta property="og:locale" content={ui.seo.ogLocale} />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />

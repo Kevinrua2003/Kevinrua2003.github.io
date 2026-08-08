@@ -1,17 +1,26 @@
 ---
-import { basics } from '@cv'
 import Section from '@/components/Section.astro'
 import Options from '@/components/Options.astro'
 import { Icon } from 'astro-icon/components'
-const { name, animated_secondary_initial_label, animated_main_label,image, location, email } = basics
+import type { CV } from '@/lib/cv-types'
+import type { UIStrings, LangCode } from '@/lib/i18n'
+
+const { data: CV, ui, lang, className } = Astro.props as {
+  data: CV
+  ui: UIStrings
+  lang: LangCode
+  className?: string
+}
+const { basics } = CV
+const { name, animated_secondary_initial_label, animated_main_label, image, location, email } = basics
 const { city, region, address } = location
 ---
 
-<Section className={Astro.props.className}>
+<Section className={className}>
   <div class="min-w-[275px]">
     <section
       id="about"
-      aria-label="About me"
+      aria-label={ui.hero.aboutMe}
       class="group flex gap-2 flex-col rounded-3xl bg-skin-muted sm:bg-skin-button-muted p-4 transition-all  sm:hover:bg-skin-muted print:gap-0 print:p-2"
     >
       <div
@@ -56,7 +65,7 @@ const { city, region, address } = location
   </div>
   <div class='flex flex-col gap-6 print:hidden'>
         <div
-          aria-label="Social media"
+          aria-label={ui.hero.socialMedia}
           class="flex group/social flex-row flex-wrap items-center justify-evenly w-full rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted"
         >
           {
@@ -68,7 +77,7 @@ const { city, region, address } = location
                   href={url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  aria-label={`${network} (opens in a new tab)`}
+                  aria-label={ui.hero.opensInNewTab(network)}
                   data-umami-event={`${network} click`}
                   id={network}
                 >
@@ -78,7 +87,7 @@ const { city, region, address } = location
             })
           }
         </div>
-        <Options />
+        <Options lang={lang} ui={ui} />
   </div>
 </Section>
 

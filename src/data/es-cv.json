@@ -1,0 +1,27 @@
+{
+  "analyticsCode": "",
+  "basics": {
+    "name": "Kevin Rúa González",
+    "label": "Desarrollador",
+    "animated_main_label": "Ingeniero",
+    "animated_secondary_initial_label": "Software",
+    "animated_secondary_final_label": "fullstack",
+    "image": "/pfp.jpg",
+    "email": "kevinrua2003@email.com",
+    "url": "https://tudominio.com",
+    "summary": "Resumen",
+    "location": {
+      "address": "Alamar",
+      "city": "La Habana",
+      "countryCode": "CU",
+      "region": "Cuba"
+    },
+    "profiles": []
+  },
+  "work": [],
+  "education": [],
+  "certificates": [],
+  "skills": [],
+  "languages": [],
+  "projects": []
+}

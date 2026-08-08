@@ -1,18 +1,25 @@
 ---
 import Section from '../Section.astro'
+import type { CV } from '@/lib/cv-types'
+import type { UIStrings } from '@/lib/i18n'
 
-import { education } from '@cv'
-import { certificates } from '@cv'
+const { data: CV, ui, className } = Astro.props as {
+  data: CV;
+  ui: UIStrings;
+  className?: string;
+};
+const { education = [] } = CV
+const { certificates = [] } = CV
 ---
 
-<Section className={Astro.props.className} title='Education'>
+<Section className={className} title={ui.sections.education}>
   <ul class='space-y-4 py-3 print:space-y-0'>
     {
       education.map(
         ({ institution, startDate, endDate, area, url }: { institution: string; startDate: string; endDate: string; area: string; url?: string }) => {
           const startYear = new Date(startDate).getFullYear()
           const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : 'Actual'
+            endDate != null ? new Date(endDate).getFullYear() : ui.education.current
           const years = `${startYear} - ${endYear}`
 
           return (
@@ -54,7 +61,7 @@ import { certificates } from '@cv'
   </ul>
   {
     certificates.length > 0 && (
-      <Section className={Astro.props.className} title='Certificates'>
+      <Section className={className} title={ui.sections.certificates}>
         <ul class='space-y-4 py-3 print:space-y-0'>
           {certificates.map(({ name, date, issuer, url }: { name: string; date: string; issuer: string; url?: string }) => {
             const certificateYear = new Date(date).getFullYear()

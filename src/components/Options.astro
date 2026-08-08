@@ -1,16 +1,24 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { LANGS } from '@/lib/i18n'
+import type { LangCode, UIStrings } from '@/lib/i18n'
+
+const { lang, ui } = Astro.props as {
+  lang: LangCode
+  ui: UIStrings
+}
+const otherLangs = LANGS.filter((l) => l.code !== lang)
 ---
 
 <div
-  aria-label="Options"
+  aria-label={ui.options.aria}
   class="flex flex-col justify-evenly w-full rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
 >
   <button
     data-ccursor
     id="themeSwitch"
     type="button"
-    aria-label="Toggle dark mode"
+    aria-label={ui.options.toggleDark}
     class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
   >
     <Icon
@@ -20,19 +28,32 @@ import { Icon } from 'astro-icon/components'
       height={28}
     />
     <Icon name='ri:sun-fill' class='dark:hidden' width={28} height={28} />
-    <span class="hidden dark:block font-mono text-sm font-bold ml-2">Light mode</span>
-    <span class="dark:hidden font-mono text-sm font-bold ml-2">Dark mode</span>
+    <span class="hidden dark:block font-mono text-sm font-bold ml-2">{ui.options.lightMode}</span>
+    <span class="dark:hidden font-mono text-sm font-bold ml-2">{ui.options.darkMode}</span>
   </button>
+  {
+    otherLangs.map((other) => (
+      <a
+        data-ccursor
+        href={`/${other.code}/`}
+        aria-label={`${ui.options.switchLanguage}: ${other.name}`}
+        class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
+      >
+        <Icon name='ri:global-line' width={28} height={28} />
+        <span class="font-mono text-sm font-bold ml-2">{other.label}</span>
+      </a>
+    ))
+  }
   <a
     data-ccursor
     href="/resume.pdf"
     target="_blank"
     rel="noreferrer noopener"
-    aria-label="Print resume (opens in a new tab)"
+    aria-label={ui.options.printResumeAria}
     class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
   >
     <Icon name='ri:file-pdf-line' width={28} height={28} />
-    <span class="font-mono text-sm font-bold ml-2">Print resume</span>
+    <span class="font-mono text-sm font-bold ml-2">{ui.options.printResume}</span>
   </a>
 </div>
 
