@@ -4,14 +4,14 @@ import { Icon } from 'astro-icon/components'
 
 <div
   aria-label="Options"
-  class="flex group/options flex-wrap justify-evenly sm:h-40 sm:w-40 w-full h-min sm:flex-col rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
+  class="flex flex-col justify-evenly w-full rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
 >
   <button
     data-ccursor
     id="themeSwitch"
     type="button"
     aria-label="Toggle dark mode"
-    class="flex flex-col sm:basis-1/2 items-center justify-center rounded-md hover:cursor-none"
+    class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
   >
     <Icon
       name='ri:moon-fill'
@@ -20,8 +20,8 @@ import { Icon } from 'astro-icon/components'
       height={28}
     />
     <Icon name='ri:sun-fill' class='dark:hidden' width={28} height={28} />
-    <span class="hidden dark:block font-mono text-sm font-bold">Light mode</span>
-    <span class="dark:hidden font-mono text-sm font-bold">Dark mode</span>
+    <span class="hidden dark:block font-mono text-sm font-bold ml-2">Light mode</span>
+    <span class="dark:hidden font-mono text-sm font-bold ml-2">Dark mode</span>
   </button>
   <a
     data-ccursor
@@ -29,10 +29,10 @@ import { Icon } from 'astro-icon/components'
     target="_blank"
     rel="noreferrer noopener"
     aria-label="Print resume (opens in a new tab)"
-    class="flex flex-col sm:basis-1/2 items-center justify-center rounded-md hover:cursor-none"
+    class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
   >
     <Icon name='ri:file-pdf-line' width={28} height={28} />
-    <span class="font-mono text-sm font-bold">Print resume</span>
+    <span class="font-mono text-sm font-bold ml-2">Print resume</span>
   </a>
 </div>
 
