@@ -12,7 +12,7 @@ const { data: CV, ui, className } = Astro.props as {
 const { projects = [] } = CV;
 ---
 
-<Section className={className} title={ui.sections.projects}>
+<Section className={className} title={ui.sections.projects} eyebrow={ui.eyebrows.projects}>
   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
     {
       projects && projects.map(

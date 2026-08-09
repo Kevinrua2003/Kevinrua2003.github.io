@@ -17,7 +17,7 @@ const showMore = ui.experience.showMore
 const showLess = ui.experience.showLess
 ---
 
-<Section className={className} title={ui.sections.experience}>
+<Section className={className} title={ui.sections.experience} eyebrow={ui.eyebrows.experience}>
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, summary, responsibilities,  url, skills, location, location_type }) => {
       const startYear = new Date(startDate).getFullYear()

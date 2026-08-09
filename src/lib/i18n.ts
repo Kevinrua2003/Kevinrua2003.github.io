@@ -30,6 +30,14 @@ export interface UIStrings {
     education: string;
     certificates: string;
   };
+  eyebrows: {
+    about: string;
+    experience: string;
+    projects: string;
+    skills: string;
+    education: string;
+    certificates: string;
+  };
   options: {
     aria: string;
     toggleDark: string;
@@ -84,6 +92,14 @@ const UI: Record<LangCode, UIStrings> = {
       education: 'Education',
       certificates: 'Certificates',
     },
+    eyebrows: {
+      about: '// about',
+      experience: '// experience',
+      projects: '// projects',
+      skills: '// skills',
+      education: '// education',
+      certificates: '// certificates',
+    },
     options: {
       aria: 'Options',
       toggleDark: 'Toggle dark mode',
@@ -136,6 +152,14 @@ const UI: Record<LangCode, UIStrings> = {
       skills: 'Habilidades',
       education: 'Educación',
       certificates: 'Certificados',
+    },
+    eyebrows: {
+      about: '// sobre mí',
+      experience: '// experiencia',
+      projects: '// proyectos',
+      skills: '// habilidades',
+      education: '// educación',
+      certificates: '// certificados',
     },
     options: {
       aria: 'Opciones',
