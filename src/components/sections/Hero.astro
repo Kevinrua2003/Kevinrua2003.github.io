@@ -152,12 +152,14 @@ const { city, region, address } = location
 
   // Restore dark mode after printing
   window.addEventListener('afterprint', () => {
+    const storedTheme = localStorage.theme
+    const hasStoredTheme = 'theme' in localStorage
     const systemPrefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches
     if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && systemPrefersDark)
+      storedTheme === 'dark' ||
+      (!hasStoredTheme && systemPrefersDark)
     ) {
       document.documentElement.classList.add('dark')
     }

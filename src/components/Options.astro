@@ -114,9 +114,11 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
   }
 
   // Initialize theme based on user preference or system setting
+  const storedTheme = localStorage.theme
+  const hasStoredTheme = 'theme' in localStorage
   if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) &&
+    storedTheme === 'dark' ||
+    (!hasStoredTheme &&
       window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
     isDark = true
