@@ -1,26 +1,24 @@
 import { addCursor, setStyles } from "./chunks";
 import contextMode from "./modes/contextMode";
 import propNames from "./propNames";
+import type { CProps } from "./types";
 
 const contextCursor = (props: CProps = {}) => {
-  // Default props
-  props = {
+  const opts: Required<CProps> = {
     radius: props.radius || 20,
     transitionSpeed: props.transitionSpeed || 0.16,
     parallaxIndex: props.parallaxIndex || 10,
     hoverPadding: props.hoverPadding || 6,
   };
 
-  // Set base
   setStyles();
-  const cCursor = addCursor(props) as HTMLElement;
+  const cCursor = addCursor(opts);
 
-  // Load mode when page is loaded
   window.onload = () => {
-    let interactElements = document.querySelectorAll(
+    const interactElements = document.querySelectorAll(
       `[${propNames.dataAttr}]`
     ) as NodeListOf<Element>;
-    contextMode(cCursor, props, interactElements);
+    contextMode(cCursor, opts, interactElements);
   };
 };
 
