@@ -41,7 +41,7 @@ const { city, region, address } = location
       </div>
       <div data-ccursor="noPadding" class='flex w-max gap-2 py-1 px-2 text-sm text-skin-muted'>
         <Icon class='print:hidden sm:group-hover:text-skin-hue' name='mdi:world' width={20} height={20} />
-        {address}, {city}, {region}
+        {address ? address + "," : ""} {city ? city + ", " : ""} {region ? region : ""}
       </div>
       <div class="hidden print:block"><b>Contact: </b>{email}</div>
     </section>
@@ -57,6 +57,7 @@ const { city, region, address } = location
               { id: 'education', label: ui.sections.education },
               { id: 'projects', label: ui.sections.projects },
               { id: 'skills', label: ui.sections.skills },
+              { id: 'contact', label: ui.sections.contact },
             ].map(({ id, label }) => (
               <a
                 data-ccursor

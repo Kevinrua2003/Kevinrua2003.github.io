@@ -7,6 +7,7 @@ import Education from "@/components/sections/Education.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
+import Contact from "@/components/sections/Contact.astro";
 import { getCV, getUI, isLang, DEFAULT_LANG } from "@/lib/i18n";
 import type { CV } from "@/lib/cv-types";
 import type { UIStrings } from "@/lib/i18n";
@@ -42,6 +43,7 @@ const { name, label, url } = data.basics;
           <>
             <Projects className="content-visibility-auto print:hidden" data={data} ui={ui} />
             <Skills className="content-visibility-auto print:col-span-full" data={data} ui={ui} />
+            <Contact className="content-visibility-auto print:hidden" data={data} ui={ui} />
           </>
         )
       }

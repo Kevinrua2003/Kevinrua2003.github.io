@@ -21,11 +21,11 @@ yarn-error.log
 
 # Otros archivos generales
 *.log
-*.env
 *.env.local
 *.env.*.local
 *.DS_Store
 *.swp
+.env
 .atl
 .codegraph
 .superpowers

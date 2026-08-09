@@ -28,6 +28,7 @@ export interface UIStrings {
     projects: string;
     skills: string;
     education: string;
+    contact: string;
   };
   eyebrows: {
     about: string;
@@ -35,6 +36,21 @@ export interface UIStrings {
     projects: string;
     skills: string;
     education: string;
+    contact: string;
+  };
+  contact: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    send: string;
+    sending: string;
+    success: string;
+    error: string;
+    placeholderName: string;
+    placeholderEmail: string;
+    placeholderSubject: string;
+    placeholderMessage: string;
   };
   options: {
     aria: string;
@@ -88,6 +104,7 @@ const UI: Record<LangCode, UIStrings> = {
       projects: 'Projects',
       skills: 'Skills',
       education: 'Education',
+      contact: 'Contact',
     },
     eyebrows: {
       about: '// about',
@@ -95,6 +112,21 @@ const UI: Record<LangCode, UIStrings> = {
       projects: '// projects',
       skills: '// skills',
       education: '// education',
+      contact: '// contact',
+    },
+    contact: {
+      name: 'Name',
+      email: 'Email',
+      subject: 'Subject',
+      message: 'Message',
+      send: 'Send Message',
+      sending: 'Sending...',
+      success: 'Message sent successfully!',
+      error: 'An error occurred while sending the message.',
+      placeholderName: 'John Doe',
+      placeholderEmail: 'john@example.com',
+      placeholderSubject: 'Project inquiry / Feedback',
+      placeholderMessage: 'Write your message here...',
     },
     options: {
       aria: 'Options',
@@ -147,6 +179,7 @@ const UI: Record<LangCode, UIStrings> = {
       projects: 'Proyectos',
       skills: 'Habilidades',
       education: 'Educación',
+      contact: 'Contacto',
     },
     eyebrows: {
       about: '// sobre mí',
@@ -154,6 +187,21 @@ const UI: Record<LangCode, UIStrings> = {
       projects: '// proyectos',
       skills: '// habilidades',
       education: '// educación',
+      contact: '// contacto',
+    },
+    contact: {
+      name: 'Nombre',
+      email: 'Correo electrónico',
+      subject: 'Asunto',
+      message: 'Mensaje',
+      send: 'Enviar mensaje',
+      sending: 'Enviando...',
+      success: '¡Mensaje enviado con éxito!',
+      error: 'Hubo un error al enviar el mensaje.',
+      placeholderName: 'Tu nombre',
+      placeholderEmail: 'tu.correo@ejemplo.com',
+      placeholderSubject: 'Consulta sobre un proyecto / Propuesta',
+      placeholderMessage: 'Escribe tu mensaje aquí...',
     },
     options: {
       aria: 'Opciones',
