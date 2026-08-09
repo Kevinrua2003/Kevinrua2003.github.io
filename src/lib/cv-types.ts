@@ -50,6 +50,7 @@ export interface Project {
   highlights: Array<string>;
   url?: string;
   github?: string;
+  image?: string;
   stack?: Record<string, string>;
 }
 

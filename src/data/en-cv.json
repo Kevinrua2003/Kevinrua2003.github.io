@@ -168,6 +168,13 @@
       "color": "#2496ED",
       "level": "Avanzado",
       "keywords": ["DevOps", "Containerization"]
+    },
+    {
+      "name": "PrismaORM",
+      "icon": "simple-icons:prisma",
+      "color": "#131313FF",
+      "level": "Avanzado",
+      "keywords": ["DevOps", "Containerization"]
     }
   ],
   "languages": [
@@ -182,38 +189,49 @@
   ],
   "projects": [
     {
-      "name": "Personal Web Portfolio",
+      "name": "E-Shop",
       "isActive": true,
-      "description": "Modern and responsive web portfolio with multi-language support (i18n), data-driven architecture, and dark mode.",
+      "description": "Full-stack e-commerce platform for electronics: product catalog with search and category filters, persistent shopping cart, orders with delivery status, and an admin panel to manage products and orders.",
       "highlights": [
-        "Built with Astro and TypeScript for high performance",
-        "Minimalist design with animations and PDF print support",
-        "Dynamic internationalization (Spanish / English)"
+        "Product catalog with search and category filtering",
+        "Persistent shopping cart and order tracking with delivery status",
+        "Role-based authentication (JWT + HTTP-only cookies) with customer and admin areas",
+        "REST API documented with Swagger on a PostgreSQL + Prisma data model"
       ],
-      "url": "https://github.com/Kevinrua2003",
-      "github": "https://github.com/Kevinrua2003",
+      "url": "https://github.com/Kevinrua2003/e-shop_frontend",
+      "github": "https://github.com/Kevinrua2003/e-shop_frontend",
+      "image": "/projects/e-shop.png",
       "stack": {
-        "Astro": "simple-icons:astro",
-        "TypeScript": "simple-icons:typescript",
-        "Tailwind CSS": "simple-icons:tailwindcss"
+        "Next.js": "simple-icons:nextdotjs",
+        "React": "simple-icons:react",
+        "NestJS": "simple-icons:nestjs",
+        "PostgreSQL": "simple-icons:postgresql",
+        "Prisma": "simple-icons:prisma",
+        "Tailwind CSS": "simple-icons:tailwindcss",
+        "MUI": "simple-icons:mui"
       }
     },
     {
-      "name": "Full Stack Web Platform",
+      "name": "Events Decoration Manager",
       "isActive": true,
-      "description": "Comprehensive web application with user management, structured API backend, and relational database persistence.",
+      "description": "Full-stack application to manage event decoration contracts: clients, events, providers with products and services, and contracts with itemized resources and a modification history.",
       "highlights": [
-        "Interactive frontend developed in Next.js and React",
-        "Robust backend built with NestJS and PostgreSQL",
-        "Secure authentication and REST service integration"
+        "Contract management linking clients and events with products and services",
+        "Provider catalog with products and services per provider",
+        "Contract modification history and employee roles (staff, HR, accounting, CEO)",
+        "Role-based authentication (JWT) on a shadcn/ui (Radix) interface"
       ],
-      "url": "https://github.com/Kevinrua2003",
-      "github": "https://github.com/Kevinrua2003",
+      "url": "https://github.com/Kevinrua2003/events-decoration-front",
+      "github": "https://github.com/Kevinrua2003/events-decoration-front",
+      "image": "/projects/events-decoration.png",
       "stack": {
-        "React": "simple-icons:react",
         "Next.js": "simple-icons:nextdotjs",
+        "React": "simple-icons:react",
         "NestJS": "simple-icons:nestjs",
-        "PostgreSQL": "simple-icons:postgresql"
+        "PostgreSQL": "simple-icons:postgresql",
+        "Prisma": "simple-icons:prisma",
+        "Tailwind CSS": "simple-icons:tailwindcss",
+        "shadcn/ui": "simple-icons:shadcnui"
       }
     }
   ]

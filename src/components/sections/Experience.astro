@@ -88,7 +88,7 @@ const showLess = ui.experience.showLess
                 )}
                 </div>
 
-                <button data-ccursor="lift" data-show-more={showMore} data-show-less={showLess} class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
+                <button data-ccursor="lift" data-show-more={showMore} data-show-less={showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
                   <span class="expand-text">{showMore}</span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
@@ -113,16 +113,16 @@ const showLess = ui.experience.showLess
   </ul>
 </Section>
 <script>
-  const expandButton = document.querySelectorAll<HTMLElement>('.expand-button');
+  const expandButton = document.querySelectorAll<HTMLElement>('#experience .expand-button');
 
   expandButton.forEach(button => {
     button.addEventListener('click', () => {
       const container = button.closest<HTMLElement>('.expand-container')!;
       container.dataset.expanded = container.dataset.expanded === 'true' ? 'false' : 'true';
       const expandText = button.querySelector<HTMLElement>('.expand-text')!;
-      expandText.innerHTML = container.dataset.expanded === 'true'
-        ? button.dataset.showLess!
-        : button.dataset.showMore!
+      const expanded = container.dataset.expanded === 'true';
+      expandText.textContent = expanded ? button.dataset.showLess! : button.dataset.showMore!;
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     });
   });
 </script>

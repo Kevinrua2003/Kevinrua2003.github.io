@@ -91,6 +91,10 @@ export interface UIStrings {
     view: (name: string) => string;
     viewGithub: (name: string) => string;
     technologies: string;
+    showMore: string;
+    showLess: string;
+    highlights: string;
+    imageAlt: (name: string) => string;
   };
   education: {
     current: string;
@@ -199,6 +203,10 @@ const UI: Record<LangCode, UIStrings> = {
       view: (name) => `View ${name}`,
       viewGithub: (name) => `View ${name} in GitHub`,
       technologies: 'Technologies used',
+      showMore: 'Show more',
+      showLess: 'Show less',
+      highlights: 'Highlights:',
+      imageAlt: (name) => `${name} preview`,
     },
     education: {
       current: 'Current',
@@ -306,6 +314,10 @@ const UI: Record<LangCode, UIStrings> = {
       view: (name) => `Ver ${name}`,
       viewGithub: (name) => `Ver ${name} en GitHub`,
       technologies: 'Tecnologías usadas',
+      showMore: 'Ver más',
+      showLess: 'Ver menos',
+      highlights: 'Destacados:',
+      imageAlt: (name) => `${name} vista previa`,
     },
     education: {
       current: 'Actual',
