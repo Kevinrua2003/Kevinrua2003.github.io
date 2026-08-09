@@ -1,4 +1,5 @@
 import type { CV } from './cv-types';
+import type { ResumeLabels } from './resume-engine/labels';
 import en from '../data/en-cv.json';
 import es from '../data/es-cv.json';
 
@@ -71,6 +72,7 @@ export interface UIStrings {
   nav: {
     main: string;
   };
+  resume: ResumeLabels;
   hero: {
     aboutMe: string;
     socialMedia: string;
@@ -157,6 +159,28 @@ const UI: Record<LangCode, UIStrings> = {
     nav: {
       main: 'Main navigation',
     },
+    resume: {
+      sections: {
+        summary: 'Summary',
+        experience: 'Experience',
+        education: 'Education',
+        projects: 'Projects',
+        skills: 'Skills',
+        languages: 'Languages',
+        certificates: 'Certificates',
+      },
+      present: 'Present',
+      skillsLabel: 'Skills:',
+      gpa: 'GPA',
+      relevantCoursework: 'Relevant Coursework',
+      degreeConnector: ' in ',
+      generating: 'Generating…',
+      downloadCv: 'Download CV',
+      fileSuffix: 'EN',
+      locale: 'en-US',
+      emptyTitle: 'Your resume will be generated from your data',
+      emptySub: 'Add content to your cv.json to get started',
+    },
     hero: {
       aboutMe: 'About me',
       socialMedia: 'Social media',
@@ -241,6 +265,28 @@ const UI: Record<LangCode, UIStrings> = {
     },
     nav: {
       main: 'Navegación principal',
+    },
+    resume: {
+      sections: {
+        summary: 'Resumen',
+        experience: 'Experiencia',
+        education: 'Educación',
+        projects: 'Proyectos',
+        skills: 'Habilidades',
+        languages: 'Idiomas',
+        certificates: 'Certificados',
+      },
+      present: 'Actual',
+      skillsLabel: 'Habilidades:',
+      gpa: 'GPA',
+      relevantCoursework: 'Cursos relevantes',
+      degreeConnector: ' en ',
+      generating: 'Generando…',
+      downloadCv: 'Descargar CV',
+      fileSuffix: 'ES',
+      locale: 'es-ES',
+      emptyTitle: 'Tu CV se generará a partir de tus datos',
+      emptySub: 'Añade contenido a tu cv.json para empezar',
     },
     hero: {
       aboutMe: 'Sobre mí',

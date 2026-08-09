@@ -1,12 +1,14 @@
 ---
 import { Icon } from 'astro-icon/components'
+import ResumeDownload from './ResumeDownload.astro'
 import { LANGS } from '@/lib/i18n'
 import type { LangCode, UIStrings } from '@/lib/i18n'
-import type { Profile } from '@/lib/cv-types'
+import type { CV, Profile } from '@/lib/cv-types'
 
-const { lang, ui, profiles = [] } = Astro.props as {
+const { lang, ui, cv, profiles = [] } = Astro.props as {
   lang: LangCode
   ui: UIStrings
+  cv: CV
   profiles?: Profile[]
 }
 const otherLangs = LANGS.filter((l) => l.code !== lang)
@@ -40,17 +42,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
         </a>
       ))
     }
-    <a
-      data-ccursor
-      href="/resume.pdf"
-      target="_blank"
-      rel="noreferrer noopener"
-      aria-label={ui.options.printResumeAria}
-      class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
-    >
-      <Icon name='ri:file-pdf-line' width={22} height={22} />
-      <span class="font-mono text-xs font-bold ml-1">CV</span>
-    </a>
+    <ResumeDownload cv={cv} labels={ui.resume} />
   </div>
 
   <hr class="w-px h-6 bg-skin-muted/40 my-0" />
