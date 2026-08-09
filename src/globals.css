@@ -85,6 +85,17 @@
 
   .scrollbar-thin::-webkit-scrollbar { height: 10px; }
   .scrollbar-thumb-gray-800::-webkit-scrollbar-thumb { background-color: #a0aec0; border-radius: 4px; }
+
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
+  @media print {
+    .content-visibility-auto {
+      content-visibility: visible;
+    }
+  }
 }
 
 ::-webkit-scrollbar {
