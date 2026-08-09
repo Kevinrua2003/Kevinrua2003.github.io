@@ -45,7 +45,7 @@ const { education = [] } = CV
                       <a
                         target='_blank'
                         rel="noreferrer noopener"
-                        class='inline-block text-skin-base decoration-dotted underline-offset-4 hover:text-skin-hue hover:underline transition-all break-words'
+                        class='inline-block text-skin-base decoration-dotted underline-offset-4 hover:text-skin-hue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm transition-all break-words'
                         href={url}>
                         {institution}
                       </a>
@@ -55,7 +55,7 @@ const { education = [] } = CV
                   </h3>
                   <div class='text-sm text-skin-muted break-words mt-0.5'>{area}</div>
                 </div>
-                <time data-ccursor="lift" class='text-xs font-mono font-semibold text-skin-hue/90 bg-skin-button-accent/15 border border-skin-hue/20 px-2 py-0.5 rounded-md w-fit shrink-0 self-start mt-0.5 sm:mt-1'>
+                <time data-ccursor="lift" class='text-xs font-mono font-semibold text-skin-strong bg-skin-button-accent/15 border border-skin-hue/20 px-2 py-0.5 rounded-md w-fit shrink-0 self-start mt-0.5 sm:mt-1'>
                   {years}
                 </time>
               </div>

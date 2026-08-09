@@ -68,6 +68,9 @@ export interface UIStrings {
     printResumeAria: string;
     switchLanguage: string;
   };
+  nav: {
+    main: string;
+  };
   hero: {
     aboutMe: string;
     socialMedia: string;
@@ -151,6 +154,9 @@ const UI: Record<LangCode, UIStrings> = {
       printResumeAria: 'Print resume (opens in a new tab)',
       switchLanguage: 'Switch language',
     },
+    nav: {
+      main: 'Main navigation',
+    },
     hero: {
       aboutMe: 'About me',
       socialMedia: 'Social media',
@@ -232,6 +238,9 @@ const UI: Record<LangCode, UIStrings> = {
       printResume: 'Imprimir CV',
       printResumeAria: 'Imprimir CV (se abre en una pestaña nueva)',
       switchLanguage: 'Cambiar idioma',
+    },
+    nav: {
+      main: 'Navegación principal',
     },
     hero: {
       aboutMe: 'Sobre mí',

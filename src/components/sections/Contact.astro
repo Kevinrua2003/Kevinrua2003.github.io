@@ -16,7 +16,16 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
 
 <Section id="contact" className={className} title={ui.sections.contact} eyebrow={"//"}>
   <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-skin-button-muted/50 p-6 shadow-sm ring-1 ring-skin-muted sm:hover:ring-skin-hue/50 transition-all duration-250 ease-in-out">
-    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-4">
+    <form
+      id="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      data-send={ui.contact.send}
+      data-sending={ui.contact.sending}
+      data-success={ui.contact.success}
+      data-error={ui.contact.error}
+      class="flex flex-col gap-4"
+    >
       <input type="hidden" name="access_key" value={web3FormsAccessKey} />
       <input type="hidden" name="from_name" value="Portfolio Contact Form" />
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
@@ -83,7 +92,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
         <button
           type="submit"
           id="contact-submit"
-          class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-skin-hue/90 hover:bg-skin-hue px-6 py-2.5 font-mono text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-skin-button-accent hover:bg-skin-button-accent-hover px-6 py-2.5 font-mono text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue focus-visible:ring-offset-2"
         >
           <Icon name="ri:send-plane-fill" width={18} height={18} />
           <span id="submit-text">{ui.contact.send}</span>
@@ -129,7 +138,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
 
       if (submitBtn && submitText) {
         submitBtn.disabled = true;
-        submitText.textContent = '...';
+        submitText.textContent = form.dataset.sending || '...';
       }
 
       try {
@@ -143,26 +152,26 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
         const json = await response.json();
         
         if (status) {
-          status.classList.remove('hidden', 'bg-red-500/20', 'text-red-400', 'bg-green-500/20', 'text-green-400');
+          status.classList.remove('hidden', 'bg-red-500/20', 'text-red-600', 'dark:text-red-400', 'bg-green-500/20', 'text-green-600', 'dark:text-green-400');
           if (response.status === 200) {
-            status.classList.add('bg-green-500/20', 'text-green-400');
-            status.textContent = json.message || 'Mensaje enviado correctamente';
+            status.classList.add('bg-green-500/20', 'text-green-600', 'dark:text-green-400');
+            status.textContent = json.message || form.dataset.success || 'OK';
             form.reset();
           } else {
-            status.classList.add('bg-red-500/20', 'text-red-400');
-            status.textContent = json.message || 'Error al enviar mensaje';
+            status.classList.add('bg-red-500/20', 'text-red-600', 'dark:text-red-400');
+            status.textContent = json.message || form.dataset.error || 'Error';
           }
         }
       } catch (error) {
         if (status) {
           status.classList.remove('hidden');
-          status.classList.add('bg-red-500/20', 'text-red-400');
-          status.textContent = 'Error de conexión. Por favor intenta de nuevo.';
+          status.classList.add('bg-red-500/20', 'text-red-600', 'dark:text-red-400');
+          status.textContent = form.dataset.error || 'Error';
         }
       } finally {
         if (submitBtn && submitText) {
           submitBtn.disabled = false;
-          submitText.textContent = 'Enviar mensaje';
+          submitText.textContent = form.dataset.send || 'Send';
         }
       }
     });

@@ -16,10 +16,11 @@
     --color-text-muted: 100, 116, 139;
     --color-text-inverted: 240, 240, 240;
     --color-fill: 241, 245, 249;
-    --muted: 148, 163, 184;
+    --muted: 203, 213, 225;
     --color: 59, 130, 246;
+    --color-hue-strong: 37, 99, 235;
     --color-button-accent: 59, 130, 246;
-    --color-button-accent-hover: 0, 185, 255;
+    --color-button-accent-hover: 37, 99, 235;
     --color-button-muted: 226, 232, 240;
   }
 
@@ -28,15 +29,17 @@
     --color-text-muted: 148, 163, 184;
     --color-text-inverted: 240, 240, 240;
     --color-fill: 2, 6, 23;
-    --muted: 51, 65, 85;
+    --muted: 30, 41, 59;
     --color: 59, 130, 246;
+    --color-hue-strong: 96, 165, 250;
     --color-button-accent: 59, 130, 246;
-    --color-button-accent-hover: 0, 185, 255;
-    --color-button-muted: 30, 41, 59;
+    --color-button-accent-hover: 96, 165, 250;
+    --color-button-muted: 15, 23, 42;
   }
 
   body {
-    @apply bg-skin-fill text-skin-base font-sans select-none;
+    @apply bg-skin-fill text-skin-base font-sans;
+    -webkit-font-smoothing: antialiased;
 
     .c-cursor {
       position: fixed;
@@ -45,6 +48,13 @@
       border-radius: 200px;
       @apply bg-skin-hue/20;
     }
+  }
+
+  /* Custom cursor hides the native one only while it is active (toggled by JS).
+     This guarantees a visible cursor as fallback if the script fails. */
+  html.cursor-hidden,
+  html.cursor-hidden * {
+    cursor: none !important;
   }
 
   .content-visibility-auto {
@@ -59,23 +69,13 @@
   }
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #222;
-}
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #222;
-}
- /* removed scrollbar */
 html {
   scroll-behavior: smooth;
+}
+/* Scrollbars are hidden site-wide (scrollbar-hide); the color tokens below
+   keep native scrollbars consistent when they do appear (e.g. overlay UAs). */
+* {
+  scrollbar-color: var(--color-button-muted) var(--color-fill);
 }
 html, body {
   @apply scrollbar-hide;

@@ -68,7 +68,9 @@ const activateCursor = () => {
 		cursor.style.display = "";
 	}
 
-	container.style.cursor = "none";
+	// Hide the native cursor via a class so that, if this script ever fails to
+	// run, the user keeps a visible cursor (safe fallback).
+	document.documentElement.classList.add("cursor-hidden");
 	container.style.scrollBehavior = "smooth";
 	container.addEventListener("mousedown", onMouseDown);
 	container.addEventListener("mousemove", onMouseMove);
@@ -80,7 +82,7 @@ const deactivateCursor = () => {
 	if (!cursorActive) return;
 	cursorActive = false;
 
-	container.style.cursor = "";
+	document.documentElement.classList.remove("cursor-hidden");
 	container.style.scrollBehavior = "";
 	container.removeEventListener("mousedown", onMouseDown);
 	container.removeEventListener("mousemove", onMouseMove);

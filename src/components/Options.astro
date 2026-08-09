@@ -22,7 +22,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
       id="themeSwitch"
       type="button"
       aria-label={ui.options.toggleDark}
-      class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+      class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
     >
       <Icon name='ri:moon-fill' class='hidden dark:block' width={22} height={22}/>
       <Icon name='ri:sun-fill' class='dark:hidden' width={22} height={22} />
@@ -33,7 +33,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
           data-ccursor
           href={`/${other.code}/`}
           aria-label={`${ui.options.switchLanguage}: ${other.name}`}
-          class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+          class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
         >
           <Icon name='ri:global-line' width={22} height={22} />
           <span class="font-mono text-xs font-bold ml-1">{other.label}</span>
@@ -46,7 +46,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
       target="_blank"
       rel="noreferrer noopener"
       aria-label={ui.options.printResumeAria}
-      class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+      class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
     >
       <Icon name='ri:file-pdf-line' width={22} height={22} />
       <span class="font-mono text-xs font-bold ml-1">CV</span>
@@ -60,7 +60,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
       profiles && profiles.map(({ network, url, icon, color }) => (
         <a
           data-ccursor
-          class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+          class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
           href={url}
           target="_blank"
           rel="noreferrer noopener"

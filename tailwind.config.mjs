@@ -25,6 +25,7 @@ module.exports = {
           base: withOpacity("--color-text-base"),
           muted: withOpacity("--color-text-muted"),
           inverted: withOpacity("--color-text-inverted"),
+          strong: withOpacity("--color-hue-strong"),
         },
       },
       backgroundColor: {
@@ -42,7 +43,8 @@ module.exports = {
       },
       gradientColorStops: {
         skin: {
-          hue: withOpacity("--color-fill"),
+          hue: withOpacity("--color"),
+          fill: withOpacity("--color-fill"),
         },
       },
       fontFamily: {
