@@ -81,6 +81,8 @@
 
   let steps: Array<() => void> = [];
   let prevSteps: Array<() => void> = [];
+  let rafId: number | null = null;
+  const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const step = (
     x: number,
@@ -126,10 +128,11 @@
       else i();
     });
 
-    requestAnimationFrame(frame);
+    rafId = requestAnimationFrame(frame);
   };
 
   const start = (): void => {
+    if (rafId !== null) cancelAnimationFrame(rafId);
     ctx.clearRect(0, 0, width, height);
     ctx.lineWidth = 1;
     ctx.strokeStyle = color;
@@ -141,15 +144,23 @@
       () => step(size.width + 5, randomMiddle() * size.height, r180),
     ];
     if (size.width < 500) steps = steps.slice(0, 2);
-    requestAnimationFrame(frame);
+    rafId = requestAnimationFrame(frame);
   };
 
-  start();
+  if (motionOk && !document.hidden) start();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    } else if (motionOk) {
+      frame();
+    }
+  });
 
   window.addEventListener("resize", () => {
     size.width = window.innerWidth;
     size.height = window.innerHeight;
     initCanvas(canvas, size.width, size.height);
-    start();
+    if (motionOk && !document.hidden) start();
   });
 </script>
