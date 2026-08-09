@@ -12,7 +12,7 @@ const { data: CV, ui, lang, className } = Astro.props as {
   className?: string
 }
 const { basics } = CV
-const { name, animated_secondary_initial_label, animated_main_label, image, location, email } = basics
+const { name, label, location, email } = basics
 const { city, region, address } = location
 ---
 
@@ -29,18 +29,11 @@ const { city, region, address } = location
         <div class="flex flex-col items-center">
           <h1 class=" font-semibold ">{name}</h1>
           <div class="overflow-hidden mt-1">
-            <div class="font-mono font-bold lowercase text-xl lg:text-[1rem] lg:leading-[1rem]">
+            <div class="font-mono font-bold text-xl lg:text-[1rem] lg:leading-[1rem]">
               <div data-ccursor="noPadding"  class=" p-1 group/subtitle relative flex gap-1  transition-all">
-                <p class="  font-mono font-medium lowercase text-xl lg:text-[1rem] lg:leading-[1rem]">
-                  {animated_secondary_initial_label}
+                <p class="font-mono font-medium text-xl lg:text-[1rem] lg:leading-[1rem]">
+                  {label} 
                 </p>
-            
-                <!-- <div class="absolute inset-x-0 top-0 w-max translate-y-16 transition-all duration-450 ease-in-out group-hover/subtitle:translate-y-0">
-                  <p class="font-mono font-bold lowercase text-xl lg:text-[1rem] lg:leading-[1rem] bg-clip-text ">
-                    {animated_secondary_final_label}
-                  </p>
-                </div> -->
-                <p>{animated_main_label}</p>
               </div>
             </div>
           </div>
@@ -53,31 +46,29 @@ const { city, region, address } = location
       <div class="hidden print:block"><b>Contact: </b>{email}</div>
     </section>
   </div>
-  <div class='flex flex-col gap-6 print:hidden'>
-        <div
-          aria-label={ui.hero.socialMedia}
-          class="flex group/social flex-row flex-wrap items-center justify-evenly w-full rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted"
+  <div class='flex flex-col gap-4 print:hidden'>
+        <nav
+          aria-label="Navegación de secciones"
+          class="flex flex-wrap items-center justify-evenly w-full rounded-3xl p-3 gap-1 transition-all bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted"
         >
           {
-            basics.profiles.map(({network, url, icon, color}) => {
-              return (
-                <a
-                  data-ccursor
-                  class="flex flex-col items-center justify-center rounded-md px-3 py-2 hover:cursor-none"
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={ui.hero.opensInNewTab(network)}
-                  data-umami-event={`${network} click`}
-                  id={network}
-                >
-                  <Icon name={icon} width={28} height={28} class='sm:grayscale sm:group-hover/social:grayscale-0 transition-all' style=`color: ${color};` aria-label={network}/>
-                </a>
-              )
-            })
+            [
+              { id: 'experience', label: ui.sections.experience },
+              { id: 'education', label: ui.sections.education },
+              { id: 'projects', label: ui.sections.projects },
+              { id: 'skills', label: ui.sections.skills },
+            ].map(({ id, label }) => (
+              <a
+                data-ccursor
+                href={`#${id}`}
+                class="font-mono text-xs font-semibold px-2.5 py-1.5 rounded-xl text-skin-muted hover:text-skin-hue hover:bg-skin-button-accent/20 transition-all cursor-pointer"
+              >
+                {label}
+              </a>
+            ))
           }
-        </div>
-        <Options lang={lang} ui={ui} />
+        </nav>
+        <Options lang={lang} ui={ui} profiles={basics.profiles} />
   </div>
 </Section>
 

@@ -28,7 +28,6 @@ export interface UIStrings {
     projects: string;
     skills: string;
     education: string;
-    certificates: string;
   };
   eyebrows: {
     about: string;
@@ -36,7 +35,6 @@ export interface UIStrings {
     projects: string;
     skills: string;
     education: string;
-    certificates: string;
   };
   options: {
     aria: string;
@@ -90,7 +88,6 @@ const UI: Record<LangCode, UIStrings> = {
       projects: 'Projects',
       skills: 'Skills',
       education: 'Education',
-      certificates: 'Certificates',
     },
     eyebrows: {
       about: '// about',
@@ -98,7 +95,6 @@ const UI: Record<LangCode, UIStrings> = {
       projects: '// projects',
       skills: '// skills',
       education: '// education',
-      certificates: '// certificates',
     },
     options: {
       aria: 'Options',
@@ -151,7 +147,6 @@ const UI: Record<LangCode, UIStrings> = {
       projects: 'Proyectos',
       skills: 'Habilidades',
       education: 'Educación',
-      certificates: 'Certificados',
     },
     eyebrows: {
       about: '// sobre mí',
@@ -159,7 +154,6 @@ const UI: Record<LangCode, UIStrings> = {
       projects: '// proyectos',
       skills: '// habilidades',
       education: '// educación',
-      certificates: '// certificados',
     },
     options: {
       aria: 'Opciones',

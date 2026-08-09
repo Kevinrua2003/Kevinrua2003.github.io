@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 
 import About from "@/components/sections/About.astro";
 import Experience from "@/components/sections/Experience.astro";
+import Education from "@/components/sections/Education.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
@@ -35,6 +36,7 @@ const { name, label, url } = data.basics;
       class="slide-enter-content md:ml-8 xl:ml-0 space-y-12 md:col-span-4 print:grid print:grid-cols-5 print:grid-flow-row print:gap-2 print:space-y-0"
     >
       <Experience className="print:col-span-3" data={data} ui={ui} />
+      <Education className="print:col-span-3" data={data} ui={ui} />
       {
         (
           <>

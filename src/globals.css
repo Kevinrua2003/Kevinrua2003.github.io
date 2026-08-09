@@ -74,6 +74,9 @@
   scrollbar-color: #888 #222;
 }
  /* removed scrollbar */
+html {
+  scroll-behavior: smooth;
+}
 html, body {
   @apply scrollbar-hide;
 }

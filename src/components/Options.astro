@@ -2,52 +2,84 @@
 import { Icon } from 'astro-icon/components'
 import { LANGS } from '@/lib/i18n'
 import type { LangCode, UIStrings } from '@/lib/i18n'
+import type { Profile } from '@/lib/cv-types'
 
-const { lang, ui } = Astro.props as {
+const { lang, ui, profiles = [] } = Astro.props as {
   lang: LangCode
   ui: UIStrings
+  profiles?: Profile[]
 }
 const otherLangs = LANGS.filter((l) => l.code !== lang)
 ---
 
 <div
   aria-label={ui.options.aria}
-  class="flex flex-row justify-evenly w-full rounded-3xl p-4 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
+  class="flex flex-row items-center justify-evenly w-full rounded-3xl p-3 gap-2 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
 >
-  <button
-    data-ccursor
-    id="themeSwitch"
-    type="button"
-    aria-label={ui.options.toggleDark}
-    class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
-  >
-    <Icon name='ri:moon-fill' class='hidden dark:block' width={28} height={28}/>
-    <Icon name='ri:sun-fill' class='dark:hidden' width={28} height={28} />
-  </button>
-  {
-    otherLangs.map((other) => (
-      <a
-        data-ccursor
-        href={`/${other.code}/`}
-        aria-label={`${ui.options.switchLanguage}: ${other.name}`}
-        class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
-      >
-        <Icon name='ri:global-line' width={28} height={28} />
-        <span class="font-mono text-sm font-bold ml-2">{other.label}</span>
-      </a>
-    ))
-  }
-  <a
-    data-ccursor
-    href="/resume.pdf"
-    target="_blank"
-    rel="noreferrer noopener"
-    aria-label={ui.options.printResumeAria}
-    class="flex flex-1 flex-row items-center justify-center rounded-md hover:cursor-none m-1"
-  >
-    <Icon name='ri:file-pdf-line' width={28} height={28} />
-    <span class="font-mono text-sm font-bold ml-2">CV</span>
-  </a>
+  <div class="flex flex-row items-center justify-evenly gap-2 flex-1">
+    <button
+      data-ccursor
+      id="themeSwitch"
+      type="button"
+      aria-label={ui.options.toggleDark}
+      class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+    >
+      <Icon name='ri:moon-fill' class='hidden dark:block' width={22} height={22}/>
+      <Icon name='ri:sun-fill' class='dark:hidden' width={22} height={22} />
+    </button>
+    {
+      otherLangs.map((other) => (
+        <a
+          data-ccursor
+          href={`/${other.code}/`}
+          aria-label={`${ui.options.switchLanguage}: ${other.name}`}
+          class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+        >
+          <Icon name='ri:global-line' width={22} height={22} />
+          <span class="font-mono text-xs font-bold ml-1">{other.label}</span>
+        </a>
+      ))
+    }
+    <a
+      data-ccursor
+      href="/resume.pdf"
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={ui.options.printResumeAria}
+      class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+    >
+      <Icon name='ri:file-pdf-line' width={22} height={22} />
+      <span class="font-mono text-xs font-bold ml-1">CV</span>
+    </a>
+  </div>
+
+  <hr class="w-px h-6 bg-skin-muted/40 my-0" />
+
+  <div aria-label={ui.hero.socialMedia} class="flex flex-row items-center justify-evenly gap-2 flex-1 group/social">
+    {
+      profiles && profiles.map(({ network, url, icon, color }) => (
+        <a
+          data-ccursor
+          class="flex items-center justify-center rounded-md p-1.5 hover:cursor-none"
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          aria-label={ui.hero.opensInNewTab(network)}
+          data-umami-event={`${network} click`}
+          id={network}
+        >
+          <Icon
+            name={icon}
+            width={22}
+            height={22}
+            class='sm:grayscale sm:group-hover/social:grayscale-0 transition-all'
+            style={`color: ${color};`}
+            aria-label={network}
+          />
+        </a>
+      ))
+    }
+  </div>
 </div>
 
 <style>

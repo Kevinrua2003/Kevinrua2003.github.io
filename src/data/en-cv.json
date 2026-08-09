@@ -2,26 +2,198 @@
   "analyticsCode": "",
   "basics": {
     "name": "Kevin Rúa González",
-    "label": "Developer",
-    "animated_main_label": "Engineer",
-    "animated_secondary_initial_label": "Software",
-    "animated_secondary_final_label": "fullstack",
+    "label": "Software Engineer",
     "image": "/pfp.jpg",
     "email": "kevinrua2003@email.com",
-    "url": "https://tudominio.com",
-    "summary": "Resumen",
+    "url": "https://github.com/Kevinrua2003",
+    "summary": "Full Stack Developer focused on building modern, efficient, and scalable web applications. Passionate about technology, continuous learning, and solving complex problems.",
     "location": {
       "address": "Alamar",
-      "city": "La Habana",
+      "city": "Havana",
       "countryCode": "CU",
       "region": "Cuba"
     },
-    "profiles": []
+    "profiles": [
+      {
+        "network": "GitHub",
+        "icon": "mdi:github",
+        "color": "#ffffff",
+        "username": "Kevinrua2003",
+        "url": "https://github.com/Kevinrua2003"
+      },
+      {
+        "network": "LinkedIn",
+        "icon": "mdi:linkedin",
+        "color": "#0a66c2",
+        "username": "Kevin Rúa",
+        "url": "#"
+      }
+    ]
   },
-  "work": [],
-  "education": [],
-  "certificates": [],
-  "skills": [],
-  "languages": [],
-  "projects": []
+  "work": [
+    {
+      "name": "AICA Pharmaceutical Laboratories",
+      "position": "Software Developer",
+      "url": "https://www.aica.cu/",
+      "startDate": "2025-11-01",
+      "endDate": null,
+      "summary": "Development and implementation of an intelligent demand forecasting system for pharmaceuticals using Machine Learning and process automation.",
+      "responsibilities": [
+        "Designed and implemented data analysis workflows and trained Machine Learning models in KNIME based on historical pharmaceutical data.",
+        "Developed a REST API to manage trained ML models and expose KNIME analytical workflows as web services.",
+        "Integrated n8n automation workflows connected to Telegram API to enable messaging-based access and remote queries to system services."
+      ],
+      "location": "Havana, Cuba",
+      "location_type": "On-site / Hybrid",
+      "skills": {
+        "KNIME": "simple-icons:knime",
+        "n8n": "simple-icons:n8n",
+        "REST API": "mdi:api",
+        "Machine Learning": "mdi:brain",
+        "Telegram API": "mdi:telegram"
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": "José Antonio Echeverría Technological University of Havana (CUJAE)",
+      "url": "https://cujae.edu.cu",
+      "startDate": "2023-02-01",
+      "endDate": "2026-07-31",
+      "area": "Computer Engineering"
+    }
+  ],
+  "skills": [
+    {
+      "name": "JavaScript",
+      "icon": "simple-icons:javascript",
+      "level": "Advanced",
+      "keywords": ["Frontend", "Backend"]
+    },
+    {
+      "name": "TypeScript",
+      "icon": "simple-icons:typescript",
+      "level": "Advanced",
+      "keywords": ["Frontend", "Backend"]
+    },
+    {
+      "name": "HTML5",
+      "icon": "simple-icons:html5",
+      "level": "Advanced",
+      "keywords": ["Frontend"]
+    },
+    {
+      "name": "CSS3",
+      "icon": "simple-icons:css3",
+      "level": "Advanced",
+      "keywords": ["Frontend"]
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "simple-icons:tailwindcss",
+      "level": "Advanced",
+      "keywords": ["Frontend", "Styling"]
+    },
+    {
+      "name": "React",
+      "icon": "simple-icons:react",
+      "level": "Advanced",
+      "keywords": ["Frontend", "UI"]
+    },
+    {
+      "name": "Next.js",
+      "icon": "simple-icons:nextdotjs",
+      "level": "Advanced",
+      "keywords": ["Frontend", "Fullstack"]
+    },
+    {
+      "name": "Astro",
+      "icon": "simple-icons:astro",
+      "level": "Advanced",
+      "keywords": ["Frontend", "SSG"]
+    },
+    {
+      "name": "NestJS",
+      "icon": "simple-icons:nestjs",
+      "level": "Advanced",
+      "keywords": ["Backend", "API"]
+    },
+    {
+      "name": "Strapi",
+      "icon": "simple-icons:strapi",
+      "level": "Advanced",
+      "keywords": ["Backend", "CMS"]
+    },
+    {
+      "name": "KNIME",
+      "icon": "simple-icons:knime",
+      "level": "Advanced",
+      "keywords": ["Data Science", "Machine Learning", "Workflows"]
+    },
+    {
+      "name": "n8n",
+      "icon": "simple-icons:n8n",
+      "level": "Advanced",
+      "keywords": ["Automation", "Integration", "Workflows"]
+    },
+    {
+      "name": "Git",
+      "icon": "simple-icons:git",
+      "level": "Advanced",
+      "keywords": ["Tools", "VCS"]
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "simple-icons:postgresql",
+      "level": "Advanced",
+      "keywords": ["Database", "SQL"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "B2 Upper Intermediate"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Web Portfolio",
+      "isActive": true,
+      "description": "Modern and responsive web portfolio with multi-language support (i18n), data-driven architecture, and dark mode.",
+      "highlights": [
+        "Built with Astro and TypeScript for high performance",
+        "Minimalist design with animations and PDF print support",
+        "Dynamic internationalization (Spanish / English)"
+      ],
+      "url": "https://github.com/Kevinrua2003",
+      "github": "https://github.com/Kevinrua2003",
+      "stack": {
+        "Astro": "simple-icons:astro",
+        "TypeScript": "simple-icons:typescript",
+        "Tailwind CSS": "simple-icons:tailwindcss"
+      }
+    },
+    {
+      "name": "Full Stack Web Platform",
+      "isActive": true,
+      "description": "Comprehensive web application with user management, structured API backend, and relational database persistence.",
+      "highlights": [
+        "Interactive frontend developed in Next.js and React",
+        "Robust backend built with NestJS and PostgreSQL",
+        "Secure authentication and REST service integration"
+      ],
+      "url": "https://github.com/Kevinrua2003",
+      "github": "https://github.com/Kevinrua2003",
+      "stack": {
+        "React": "simple-icons:react",
+        "Next.js": "simple-icons:nextdotjs",
+        "NestJS": "simple-icons:nestjs",
+        "PostgreSQL": "simple-icons:postgresql"
+      }
+    }
+  ]
 }

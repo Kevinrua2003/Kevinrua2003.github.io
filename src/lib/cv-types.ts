@@ -9,9 +9,6 @@ export interface Profile {
 export interface Basics {
   name: string;
   label: string;
-  animated_main_label: string;
-  animated_secondary_initial_label: string;
-  animated_secondary_final_label: string;
   image: string;
   email: string;
   url: string;
@@ -63,13 +60,6 @@ export interface Education {
   area: string;
 }
 
-export interface Certificate {
-  name: string;
-  date: string;
-  issuer: string;
-  url?: string;
-}
-
 export interface Language {
   language: string;
   fluency: string;
@@ -80,7 +70,6 @@ export interface CV {
   basics: Basics;
   work?: Work[];
   education?: Education[];
-  certificates?: Certificate[];
   skills: Skill[];
   projects?: Project[];
   languages: Language[];
