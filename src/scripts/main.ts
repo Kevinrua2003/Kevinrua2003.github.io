@@ -1,7 +1,8 @@
 import contextCursor from "@/lib/contextCursor";
 
 const mq = window.matchMedia("(min-width: 640px)");
-if (mq.matches) {
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+if (mq.matches && !reducedMotion.matches) {
 	contextCursor({
 		radius: 25,
 		transitionSpeed: 0.1,
