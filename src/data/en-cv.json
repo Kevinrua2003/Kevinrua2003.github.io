@@ -67,86 +67,107 @@
     {
       "name": "JavaScript",
       "icon": "simple-icons:javascript",
+      "color": "#F7DF1E",
       "level": "Advanced",
       "keywords": ["Frontend", "Backend"]
     },
     {
       "name": "TypeScript",
       "icon": "simple-icons:typescript",
+      "color": "#3178C6",
       "level": "Advanced",
       "keywords": ["Frontend", "Backend"]
     },
     {
       "name": "HTML5",
       "icon": "simple-icons:html5",
+      "color": "#E34F26",
       "level": "Advanced",
       "keywords": ["Frontend"]
     },
     {
       "name": "CSS3",
       "icon": "simple-icons:css3",
+      "color": "#1572B6",
       "level": "Advanced",
       "keywords": ["Frontend"]
     },
     {
       "name": "Tailwind CSS",
       "icon": "simple-icons:tailwindcss",
+      "color": "#06B6D4",
       "level": "Advanced",
       "keywords": ["Frontend", "Styling"]
     },
     {
       "name": "React",
       "icon": "simple-icons:react",
+      "color": "#61DAFB",
       "level": "Advanced",
       "keywords": ["Frontend", "UI"]
     },
     {
       "name": "Next.js",
       "icon": "simple-icons:nextdotjs",
+      "color": "#FFFFFFFF",
       "level": "Advanced",
       "keywords": ["Frontend", "Fullstack"]
     },
     {
       "name": "Astro",
       "icon": "simple-icons:astro",
+      "color": "#FF5D01",
       "level": "Advanced",
       "keywords": ["Frontend", "SSG"]
     },
     {
       "name": "NestJS",
       "icon": "simple-icons:nestjs",
+      "color": "#E0234E",
       "level": "Advanced",
       "keywords": ["Backend", "API"]
     },
     {
       "name": "Strapi",
       "icon": "simple-icons:strapi",
+      "color": "#4945FF",
       "level": "Advanced",
       "keywords": ["Backend", "CMS"]
     },
     {
       "name": "KNIME",
       "icon": "simple-icons:knime",
+      "color": "#FFD000",
       "level": "Advanced",
       "keywords": ["Data Science", "Machine Learning", "Workflows"]
     },
     {
       "name": "n8n",
       "icon": "simple-icons:n8n",
+      "color": "#FF6D5A",
       "level": "Advanced",
       "keywords": ["Automation", "Integration", "Workflows"]
     },
     {
       "name": "Git",
       "icon": "simple-icons:git",
+      "color": "#F05032",
       "level": "Advanced",
       "keywords": ["Tools", "VCS"]
     },
     {
       "name": "PostgreSQL",
       "icon": "simple-icons:postgresql",
+      "color": "#4169E1",
       "level": "Advanced",
       "keywords": ["Database", "SQL"]
+    },
+    {
+      "name": "Docker",
+      "icon": "simple-icons:docker",
+      "color": "#2496ED",
+      "level": "Avanzado",
+      "keywords": ["DevOps", "Containerization"]
     }
   ],
   "languages": [

@@ -52,6 +52,13 @@ export interface UIStrings {
     placeholderSubject: string;
     placeholderMessage: string;
   };
+  skills: {
+    all: string;
+    frontend: string;
+    backend: string;
+    data: string;
+    tools: string;
+  };
   options: {
     aria: string;
     toggleDark: string;
@@ -128,6 +135,13 @@ const UI: Record<LangCode, UIStrings> = {
       placeholderSubject: 'Project inquiry / Feedback',
       placeholderMessage: 'Write your message here...',
     },
+    skills: {
+      all: 'All',
+      frontend: 'Frontend & UI',
+      backend: 'Backend & Databases',
+      data: 'Data & Automation',
+      tools: 'Tools & DevOps',
+    },
     options: {
       aria: 'Options',
       toggleDark: 'Toggle dark mode',
@@ -202,6 +216,13 @@ const UI: Record<LangCode, UIStrings> = {
       placeholderEmail: 'tu.correo@ejemplo.com',
       placeholderSubject: 'Consulta sobre un proyecto / Propuesta',
       placeholderMessage: 'Escribe tu mensaje aquí...',
+    },
+    skills: {
+      all: 'Todas',
+      frontend: 'Frontend & UI',
+      backend: 'Backend & Bases de Datos',
+      data: 'Data & Automatización',
+      tools: 'Herramientas',
     },
     options: {
       aria: 'Opciones',

@@ -9,22 +9,62 @@ const { data: CV, ui, className } = Astro.props as {
   ui: UIStrings;
   className?: string;
 };
-const { skills } = CV;
+const { skills = [] } = CV;
+
+// Duplicate skills array to make a seamless infinite marquee loop
+const marqueeSkills = [...skills, ...skills];
+
+const webSkills = skills.filter(s => ['React', 'Next.js', 'Astro', 'NestJS', 'Docker', 'PostgreSQL', 'Tailwind CSS'].includes(s.name));
+const dataSkills = skills.filter(s => ['KNIME', 'n8n', 'Git'].includes(s.name));
 ---
 
 <Section id="skills" className={className} title={ui.sections.skills} eyebrow={"//"}>
-  <ul
-    class='w-full flex print:mt-4 flex-wrap gap-4 [&>li>svg]:text-skin-hue [&>li]:text-sm'>
-    {
-      skills.map(({ name, icon, level}) => {
-        return (
-          <li class='group relative flex items-center gap-1 rounded-md border border-solid cursor-default border-skin-hue/20 bg-skin-button-accent/20 px-1 py-0.5 text-xs text-skin-hue print:border-none print:bg-transparent print:p-0 print:text-zinc-800 transform transition-transform duration-300 hover:scale-110 hover:translate-y-[-8px] sm:hover:cursor-none'>
-            {icon && <Icon name={icon} width={16} height={16} title={level} />}{' '}
-              <span>{name}</span>
-              {/* <span class="absolute transition-transform duration-300 group-hover:translate-y-full opacity-0 group-hover:opacity-100">{level}</span> */}
-          </li>
-        )
-      })
-    }
-  </ul>
+  <div class="flex flex-col gap-6 w-full overflow-hidden">
+    <!-- Infinite Marquee Ticker Carousel -->
+    <div class="relative w-full overflow-hidden rounded-2xl bg-skin-button-muted/40 p-4 border border-skin-hue/15 shadow-sm">
+      <div class="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-skin-fill to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-skin-fill to-transparent z-10 pointer-events-none"></div>
+
+      <div class="flex w-max gap-4 animate-marquee hover:[animation-play-state:paused] py-1">
+        {
+          marqueeSkills.map((skill) => {
+            const iconColor = skill.color || '#3b82f6';
+            return (
+              <div
+                data-ccursor="lift"
+                class="flex items-center gap-2.5 rounded-xl border border-skin-hue/20 bg-skin-fill/90 px-4 py-2 text-xs font-semibold text-skin-base shadow-xs whitespace-nowrap shrink-0 transition-transform hover:scale-105"
+              >
+                {skill.icon && (
+                  <Icon
+                    name={skill.icon}
+                    width={40}
+                    height={40}
+                    style={iconColor ? `color: ${iconColor};` : ''}
+                    class="shrink-0"
+                  />
+                )}
+                <span>{skill.name}</span>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
 </Section>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    display: flex;
+    animation: marquee 25s linear infinite;
+  }
+</style>

@@ -40,6 +40,7 @@ export interface Skill {
   icon: string;
   level: string;
   keywords: Array<string>;
+  color?: string;
 }
 
 export interface Project {

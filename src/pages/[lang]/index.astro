@@ -27,7 +27,7 @@ const { name, label, url } = data.basics;
 <Layout lang={lang} data={data} ui={ui} title={`${name} | ${label} | ${new URL(url).host}`}>
   <HeaderNav ui={ui} />
   <main
-    class="relative grid h-full max-w-7xl gap-12 p-8 pt-20 md:pt-24 max-sm:py-20 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 text-skin-base print:gap-4 min-w-0"
+    class="relative grid h-full max-w-fit gap-12 p-8 pt-20 md:pt-24 max-sm:py-20 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 text-skin-base print:gap-4 min-w-0"
   >
     <div
       class="slide-enter space-y-6 ease-in md:col-span-2 print:grid print:grid-cols-5 print:space-y-0 md:sticky top-20 self-start h-min"
