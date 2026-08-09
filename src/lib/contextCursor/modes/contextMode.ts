@@ -64,7 +64,7 @@ const contextMode = (
   const lerp = (from: number, to: number, t: number) => from + (to - from) * t;
 
   // FPS-independent exponential easing; tau tuned so ~90% of the tween
-  // completes in `transitionSpeed` seconds (GSAP-like feel).
+  // completes in `transitionSpeed` seconds (tween-like feel).
   const ease = (dt: number) =>
     1 - Math.exp(-dt / (props.transitionSpeed * 1000 * 0.43));
 
