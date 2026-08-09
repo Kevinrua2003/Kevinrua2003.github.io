@@ -57,8 +57,9 @@ const activateCursor = () => {
 
 	const cursor = document.querySelector<HTMLElement>(".c-cursor");
 	if (!cursor) {
-		// First activation builds the cursor element and its listeners; keep it
-		// alive across toggles so re-activation only needs to show it again.
+		// First activation creates the cursor element; its listeners are wired
+		// by contextCursor(). Keep it alive across toggles so re-activation only
+		// needs to show it again.
 		contextCursor({
 			radius: 25,
 			transitionSpeed: 0.1,
@@ -80,6 +81,7 @@ const deactivateCursor = () => {
 	cursorActive = false;
 
 	container.style.cursor = "";
+	container.style.scrollBehavior = "";
 	container.removeEventListener("mousedown", onMouseDown);
 	container.removeEventListener("mousemove", onMouseMove);
 	container.removeEventListener("mouseup", onMouseUp);
