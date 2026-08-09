@@ -8,6 +8,7 @@ import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
 import Contact from "@/components/sections/Contact.astro";
+import HeaderNav from "@/components/HeaderNav.astro";
 import { getCV, getUI, isLang, DEFAULT_LANG } from "@/lib/i18n";
 import type { CV } from "@/lib/cv-types";
 import type { UIStrings } from "@/lib/i18n";
@@ -24,17 +25,18 @@ const { name, label, url } = data.basics;
 ---
 
 <Layout lang={lang} data={data} ui={ui} title={`${name} | ${label} | ${new URL(url).host}`}>
+  <HeaderNav ui={ui} />
   <main
-    class="relative grid h-full max-w-7xl gap-12 p-8 max-sm:py-16 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 text-skin-base print:gap-4"
+    class="relative grid h-full max-w-7xl gap-12 p-8 pt-20 md:pt-24 max-sm:py-20 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 text-skin-base print:gap-4 min-w-0"
   >
     <div
-      class="slide-enter space-y-6 ease-in md:col-span-2 print:grid print:grid-cols-5 print:space-y-0 md:sticky top-0 self-start h-min"
+      class="slide-enter space-y-6 ease-in md:col-span-2 print:grid print:grid-cols-5 print:space-y-0 md:sticky top-20 self-start h-min"
     >
       <Hero className="col-span-2" data={data} ui={ui} lang={lang} />
       <About className="col-span-3" data={data} ui={ui} />
     </div>
     <div
-      class="slide-enter-content md:ml-8 xl:ml-0 space-y-12 md:col-span-4 print:grid print:grid-cols-5 print:grid-flow-row print:gap-2 print:space-y-0"
+      class="slide-enter-content md:ml-8 xl:ml-0 space-y-12 md:col-span-4 print:grid print:grid-cols-5 print:grid-flow-row print:gap-2 print:space-y-0 min-w-0"
     >
       <Experience className="print:col-span-3" data={data} ui={ui} />
       <Education className="print:col-span-3" data={data} ui={ui} />

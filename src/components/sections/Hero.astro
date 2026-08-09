@@ -47,28 +47,6 @@ const { city, region, address } = location
     </section>
   </div>
   <div class='flex flex-col gap-4 print:hidden'>
-        <nav
-          aria-label="Navegación de secciones"
-          class="flex flex-wrap items-center justify-evenly w-full rounded-3xl p-3 gap-1 transition-all bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted"
-        >
-          {
-            [
-              { id: 'experience', label: ui.sections.experience },
-              { id: 'education', label: ui.sections.education },
-              { id: 'projects', label: ui.sections.projects },
-              { id: 'skills', label: ui.sections.skills },
-              { id: 'contact', label: ui.sections.contact },
-            ].map(({ id, label }) => (
-              <a
-                data-ccursor
-                href={`#${id}`}
-                class="font-mono text-xs font-semibold px-2.5 py-1.5 rounded-xl text-skin-muted hover:text-skin-hue hover:bg-skin-button-accent/20 transition-all cursor-pointer"
-              >
-                {label}
-              </a>
-            ))
-          }
-        </nav>
         <Options lang={lang} ui={ui} profiles={basics.profiles} />
   </div>
 </Section>
