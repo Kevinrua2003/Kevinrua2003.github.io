@@ -198,7 +198,7 @@
         "Role-based authentication (JWT + HTTP-only cookies) with customer and admin areas",
         "REST API documented with Swagger on a PostgreSQL + Prisma data model"
       ],
-      "url": "https://github.com/Kevinrua2003/e-shop_frontend",
+      "url": "https://e-shop-frontend-mu.vercel.app/",
       "github": "https://github.com/Kevinrua2003/e-shop_frontend",
       "image": "/projects/e-shop.png",
       "stack": {

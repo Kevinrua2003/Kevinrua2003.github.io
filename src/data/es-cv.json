@@ -198,7 +198,7 @@
         "Autenticación por roles (JWT + cookies HTTP-only) con áreas de cliente y administración",
         "API REST documentada con Swagger sobre un modelo de datos en PostgreSQL + Prisma"
       ],
-      "url": "https://github.com/Kevinrua2003/e-shop_frontend",
+      "url": "https://e-shop-frontend-mu.vercel.app/",
       "github": "https://github.com/Kevinrua2003/e-shop_frontend",
       "image": "/projects/e-shop.png",
       "stack": {

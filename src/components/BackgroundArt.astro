@@ -1,29 +1,26 @@
-
 <div
   class="pointer-events-none fixed bottom-0 left-0 right-0 top-0 print:hidden"
   style="mask-image: radial-gradient(circle, transparent, black); -webkit-mask-image: radial-gradient(circle, transparent, black);"
 >
-  <canvas id="artPlumCanvas" width="400" height="400"></canvas>
+  <!-- Aurora (abajo): manchas de gradiente que derivan lentamente -->
+  <canvas id="artAuroraCanvas" class="absolute inset-0" width="400" height="400"></canvas>
+  <!-- Ramas (arriba): crecimiento fractal del fondo original -->
+  <canvas id="artPlumCanvas" class="absolute inset-0" width="400" height="400"></canvas>
 </div>
 
 <script>
-  const r180 = Math.PI;
-  const r90 = Math.PI / 2;
-  const r15 = Math.PI / 12;
-  const color = "#88888825";
+  // Variante 4 — Combinación: auroras (blobs de gradiente) + ramas del fondo
+  // original. Dos canvas apilados dentro del mismo contenedor enmascarado:
+  // el de abajo (artAuroraCanvas) pinta las manchas que derivan lentamente;
+  // el de arriba (artPlumCanvas) acumula el crecimiento fractal de ramas.
+  // Las auroras usan colores adaptativos (neón en dark / suaves en light);
+  // las ramas conservan su gris translúcido original.
 
-  const MIN_BRANCH = 30;
-  const len = 6;
-
-  const randomMiddle = (): number => Math.random() * 0.6 + 0.2;
+  const N_BLOBS = 15;
 
   interface CanvasSize {
     width: number;
     height: number;
-  }
-
-  interface Counter {
-    value: number;
   }
 
   const initCanvas = (
@@ -36,7 +33,6 @@
     if (!ctx) throw new Error("Unable to get canvas context");
 
     const dpr = window.devicePixelRatio || 1;
-
     const bsr =
       //@ts-ignore
       ctx.webkitBackingStorePixelRatio ||
@@ -60,6 +56,60 @@
     return { ctx, dpi };
   };
 
+  const isDark = (): boolean =>
+    document.documentElement.classList.contains("dark");
+
+  const hexToRgb = (hex: string): string => {
+    const h = hex.replace("#", "");
+    const full =
+      h.length === 3
+        ? h
+            .split("")
+            .map((c) => c + c)
+            .join("")
+        : h;
+    const n = parseInt(full, 16);
+    return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+  };
+
+  const getColors = (): string[] =>
+    isDark()
+      ? ["#34d399", "#22d3ee", "#a78bfa", "#22d3ee", "#34d399"]
+      : ["#2496ED", "#2496ED", "#99f6e4", "#2496ED", "#99f6e4"];
+
+  const size: CanvasSize = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+  const auroraCanvas = document.getElementById(
+    "artAuroraCanvas",
+  ) as HTMLCanvasElement;
+  const plumCanvas = document.getElementById(
+    "artPlumCanvas",
+  ) as HTMLCanvasElement;
+  const aurora = initCanvas(auroraCanvas, size.width, size.height);
+  const plum = initCanvas(plumCanvas, size.width, size.height);
+  const ctx = aurora.ctx;
+  const ctxBranch = plum.ctx;
+
+  const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Ramas (fondo original) ----------
+
+  const r180 = Math.PI;
+  const r90 = Math.PI / 2;
+  const r15 = Math.PI / 12;
+  const branchColor = "#88888825";
+
+  const MIN_BRANCH = 30;
+  const len = 6;
+
+  const randomMiddle = (): number => Math.random() * 0.6 + 0.2;
+
+  interface Counter {
+    value: number;
+  }
+
   const polar2cart = (
     x: number = 0,
     y: number = 0,
@@ -71,20 +121,11 @@
     return [x + dx, y + dy];
   };
 
-  const canvas = document.getElementById("artPlumCanvas") as HTMLCanvasElement;
-  const size: CanvasSize = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-  const { ctx } = initCanvas(canvas, size.width, size.height);
-  const { width, height } = canvas;
+  let branchSteps: Array<() => void> = [];
+  let branchPrevSteps: Array<() => void> = [];
+  let branchRafId: number | null = null;
 
-  let steps: Array<() => void> = [];
-  let prevSteps: Array<() => void> = [];
-  let rafId: number | null = null;
-  const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const step = (
+  const branchStep = (
     x: number,
     y: number,
     rad: number,
@@ -95,10 +136,10 @@
 
     const [nx, ny] = polar2cart(x, y, length, rad);
 
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(nx, ny);
-    ctx.stroke();
+    ctxBranch.beginPath();
+    ctxBranch.moveTo(x, y);
+    ctxBranch.lineTo(nx, ny);
+    ctxBranch.stroke();
 
     const rad1 = rad + Math.random() * r15;
     const rad2 = rad - Math.random() * r15;
@@ -113,54 +154,141 @@
 
     const rate = counter.value <= MIN_BRANCH ? 0.8 : 0.5;
 
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad1, counter));
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad2, counter));
+    if (Math.random() < rate) branchSteps.push(() => branchStep(nx, ny, rad1, counter));
+    if (Math.random() < rate) branchSteps.push(() => branchStep(nx, ny, rad2, counter));
   };
 
-  const frame = (): void => {
-    prevSteps = steps;
-    steps = [];
+  const branchFrame = (): void => {
+    branchPrevSteps = branchSteps;
+    branchSteps = [];
 
-    if (!prevSteps.length) return;
+    if (!branchPrevSteps.length) return;
 
-    prevSteps.forEach((i) => {
-      if (Math.random() < 0.5) steps.push(i);
+    branchPrevSteps.forEach((i) => {
+      if (Math.random() < 0.5) branchSteps.push(i);
       else i();
     });
 
-    rafId = requestAnimationFrame(frame);
+    branchRafId = requestAnimationFrame(branchFrame);
   };
+
+  const startBranches = (): void => {
+    if (branchRafId !== null) cancelAnimationFrame(branchRafId);
+    ctxBranch.clearRect(0, 0, plumCanvas.width, plumCanvas.height);
+    if (!motionOk) return; // reduced motion: sin ramas (igual que el original)
+    ctxBranch.lineWidth = 1;
+    ctxBranch.strokeStyle = branchColor;
+    branchPrevSteps = [];
+    branchSteps = [
+      () => branchStep(randomMiddle() * size.width, -5, r90),
+      () => branchStep(randomMiddle() * size.width, size.height + 5, -r90),
+      () => branchStep(-5, randomMiddle() * size.height, 0),
+      () => branchStep(size.width + 5, randomMiddle() * size.height, r180),
+    ];
+    if (size.width < 500) branchSteps = branchSteps.slice(0, 2);
+    branchRafId = requestAnimationFrame(branchFrame);
+  };
+
+  // ---------- Auroras (blobs de gradiente) ----------
+
+  interface Blob {
+    cx: number;
+    cy: number;
+    radius: number;
+    color: string;
+    alpha: number;
+    speed: number;
+    phase: number;
+    orbit: number;
+  }
+
+  let blobs: Blob[] = [];
+  let blobRafId: number | null = null;
+
+  const buildBlobs = (): void => {
+    blobs = [];
+    const colors = getColors();
+    const baseR = Math.max(140, Math.min(size.width, size.height) * 0.28);
+    for (let i = 0; i < N_BLOBS; i++) {
+      blobs.push({
+        cx: Math.random() * size.width,
+        cy: Math.random() * size.height,
+        radius: baseR * (0.8 + Math.random() * 1.4),
+        color: colors[i % colors.length],
+        alpha: 0.08 + Math.random() * 0.1,
+        speed: 0.05 + Math.random() * 0.12,
+        phase: Math.random() * Math.PI * 2,
+        orbit: baseR * (0.35 + Math.random() * 0.6),
+      });
+    }
+  };
+
+  const drawBlobs = (t: number): void => {
+    ctx.clearRect(0, 0, size.width, size.height);
+    for (const b of blobs) {
+      const cx = b.cx + Math.sin(t * b.speed + b.phase) * b.orbit;
+      const cy = b.cy + Math.cos(t * b.speed * 0.7 + b.phase) * b.orbit * 0.8;
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, b.radius);
+      grad.addColorStop(0, `rgba(${hexToRgb(b.color)}, ${b.alpha})`);
+      grad.addColorStop(1, `rgba(${hexToRgb(b.color)}, 0)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(cx - b.radius, cy - b.radius, b.radius * 2, b.radius * 2);
+    }
+  };
+
+  const blobFrame = (ts: number): void => {
+    drawBlobs(ts / 1000);
+    blobRafId = requestAnimationFrame(blobFrame);
+  };
+
+  const startBlobs = (): void => {
+    if (blobRafId !== null) cancelAnimationFrame(blobRafId);
+    buildBlobs();
+    if (motionOk) {
+      blobRafId = requestAnimationFrame(blobFrame);
+    } else {
+      drawBlobs(0); // reduced motion: frame estático de auroras
+    }
+  };
+
+  // ---------- Arranque / eventos ----------
 
   const start = (): void => {
-    if (rafId !== null) cancelAnimationFrame(rafId);
-    ctx.clearRect(0, 0, width, height);
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = color;
-    prevSteps = [];
-    steps = [
-      () => step(randomMiddle() * size.width, -5, r90),
-      () => step(randomMiddle() * size.width, size.height + 5, -r90),
-      () => step(-5, randomMiddle() * size.height, 0),
-      () => step(size.width + 5, randomMiddle() * size.height, r180),
-    ];
-    if (size.width < 500) steps = steps.slice(0, 2);
-    rafId = requestAnimationFrame(frame);
+    startBranches();
+    startBlobs();
   };
 
-  if (motionOk && !document.hidden) start();
+  // Reaccionar solo cuando la clase `dark` cambia de verdad (el cursor custom
+  // también toca la clase y no debe reiniciar la animación).
+  let prevDark = isDark();
+  new MutationObserver(() => {
+    const dark = isDark();
+    if (dark !== prevDark) {
+      prevDark = dark;
+      start();
+    }
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-      if (rafId !== null) cancelAnimationFrame(rafId);
+      if (branchRafId !== null) cancelAnimationFrame(branchRafId);
+      if (blobRafId !== null) cancelAnimationFrame(blobRafId);
     } else if (motionOk) {
-      frame();
+      if (blobRafId === null) blobRafId = requestAnimationFrame(blobFrame);
+      branchFrame();
     }
   });
 
   window.addEventListener("resize", () => {
     size.width = window.innerWidth;
     size.height = window.innerHeight;
-    initCanvas(canvas, size.width, size.height);
-    if (motionOk && !document.hidden) start();
+    initCanvas(auroraCanvas, size.width, size.height);
+    initCanvas(plumCanvas, size.width, size.height);
+    start();
   });
+
+  if (!motionOk || !document.hidden) start();
 </script>
