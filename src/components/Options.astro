@@ -16,7 +16,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
 
 <div
   aria-label={ui.options.aria}
-  class="flex flex-row items-center justify-evenly w-full rounded-3xl p-3 gap-2 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
+  class="flex flex-row items-center w-full rounded-3xl p-3 gap-2 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
 >
   <div class="flex flex-row items-center justify-evenly gap-2 flex-1">
     <button
@@ -43,11 +43,6 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
       ))
     }
     <ResumeDownload cv={cv} labels={ui.resume} />
-  </div>
-
-  <hr class="w-px h-6 bg-skin-muted/40 my-0" />
-
-  <div aria-label={ui.hero.socialMedia} class="flex flex-row items-center justify-evenly gap-2 flex-1 group/social">
     {
       profiles && profiles.map(({ network, url, icon, color }) => (
         <a
