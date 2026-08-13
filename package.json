@@ -7,8 +7,7 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy:vercel": "vercel deploy"
+    "astro": "astro"
   },
   "engines": {
     "node": "22.x"

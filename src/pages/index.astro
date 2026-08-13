@@ -1,5 +1,5 @@
 ---
 import { DEFAULT_LANG } from "@/lib/i18n";
 
-return Astro.redirect(`/${DEFAULT_LANG}/`);
+return Astro.redirect(`${import.meta.env.BASE_URL}${DEFAULT_LANG}/`);
 ---

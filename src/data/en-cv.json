@@ -5,7 +5,7 @@
     "label": "Software Engineer",
     "image": "/pfp.jpg",
     "email": "kevinrua2003@email.com",
-    "url": "https://github.com/Kevinrua2003",
+    "url": "https://kevinrua2003.github.io/portfolio/",
     "summary": "Software Engineer and Full Stack Developer with a mindset focused on technical excellence. I specialize in designing clean architectures and developing end-to-end platforms, ranging from interactive interfaces to backend services and automation systems. I excel at transforming complex requirements into maintainable software and staying committed to continuous professional growth and learning.",
     "location": {
       "address": "",
@@ -20,13 +20,6 @@
         "color": "#ffffff",
         "username": "Kevinrua2003",
         "url": "https://github.com/Kevinrua2003"
-      },
-      {
-        "network": "LinkedIn",
-        "icon": "mdi:linkedin",
-        "color": "#0a66c2",
-        "username": "Kevin Rúa",
-        "url": "#"
       }
     ]
   },
@@ -221,7 +214,7 @@
         "Contract modification history and employee roles (staff, HR, accounting, CEO)",
         "Role-based authentication (JWT) on a shadcn/ui (Radix) interface"
       ],
-      "url": "https://github.com/Kevinrua2003/events-decoration-front",
+      "url": "https://events-decoration-front.vercel.app/",
       "github": "https://github.com/Kevinrua2003/events-decoration-front",
       "image": "/projects/events-decoration.png",
       "stack": {

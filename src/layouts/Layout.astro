@@ -36,6 +36,9 @@ const {
 // Create a more detailed description
 const detailedDescription = ui.seo.description(name, CV.basics.label);
 
+const siteBase = `${(Astro.site ?? '').toString().replace(/\/$/, '')}${import.meta.env.BASE_URL}`;
+const absoluteImage = `${siteBase}${image.replace(/^\//, '')}`;
+
 // Create structured data for better SEO
 const structuredData = {
   "@context": "https://schema.org",
@@ -114,18 +117,18 @@ const breadcrumbSchema = {
     <link rel="canonical" href={canonicalURL} />
     
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} type="image/x-icon"/>
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.webp`} />
     
     <!-- Preload critical assets -->
-    <link rel="preload" as="image" href={image} />
+    <link rel="preload" as="image" href={`${import.meta.env.BASE_URL}${image.replace(/^\//, '')}`} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={`${url.replace(/\/$/, "")}/${lang}/`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={detailedDescription} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={absoluteImage} />
     <meta property="og:site_name" content={ui.seo.siteName(name)} />
     <meta property="og:locale" content={ui.seo.ogLocale} />
     
@@ -135,7 +138,7 @@ const breadcrumbSchema = {
     <meta name="twitter:url" content={url} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={detailedDescription} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={absoluteImage} />
     <meta name="twitter:creator" content={CV.basics.profiles.find(p => p.network === 'X / Twitter')?.username} />
     
     <!-- Additional meta tags -->

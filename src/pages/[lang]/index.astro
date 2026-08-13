@@ -9,9 +9,13 @@ import Projects from "@/components/sections/Projects.astro";
 import Skills from "@/components/sections/Skills.astro";
 import Contact from "@/components/sections/Contact.astro";
 import HeaderNav from "@/components/HeaderNav.astro";
-import { getCV, getUI, isLang, DEFAULT_LANG } from "@/lib/i18n";
+import { getCV, getUI, isLang, DEFAULT_LANG, LANGS } from "@/lib/i18n";
 import type { CV } from "@/lib/cv-types";
 import type { UIStrings } from "@/lib/i18n";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang: lang.code } }));
+}
 
 const { lang } = Astro.params;
 

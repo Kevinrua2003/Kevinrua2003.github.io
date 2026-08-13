@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- TODO: reemplaza DOMINIO por tu dominio real (ej. https://miportafolio.com) -->
+  
   <url>
-    <loc>DOMINIO/en/</loc>
+    <loc>https://kevinrua2003.github.io/portfolio/en/</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>DOMINIO/es/</loc>
+    <loc>https://kevinrua2003.github.io/portfolio/es/</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>

@@ -5,7 +5,7 @@
     "label": "Ingeniero de Software",
     "image": "/pfp.jpg",
     "email": "kevinrua2003@email.com",
-    "url": "https://github.com/Kevinrua2003",
+    "url": "https://kevinrua2003.github.io/portfolio/",
     "summary": "Ingeniero de software y Desarrollador Full Stack con mentalidad orientada a la excelencia técnica. Me especializo en diseñar arquitecturas limpias y desarrollar plataformas integrales, desde interfaces interactivas hasta servicios backend y sistemas de automatización. Destaco por mi capacidad para transformar requerimientos complejos en software mantenible y mi compromiso constante con la superación profesional y el aprendizaje de nuevas tecnologías.",
     "location": {
       "address": "",
@@ -20,13 +20,6 @@
         "color": "#ffffff",
         "username": "Kevinrua2003",
         "url": "https://github.com/Kevinrua2003"
-      },
-      {
-        "network": "LinkedIn",
-        "icon": "mdi:linkedin",
-        "color": "#0a66c2",
-        "username": "Kevin Rúa",
-        "url": "#"
       }
     ]
   },
@@ -221,7 +214,7 @@
         "Historial de modificaciones de contratos y roles de empleados (staff, RRHH, contabilidad, CEO)",
         "Autenticación por roles (JWT) con interfaz shadcn/ui (Radix)"
       ],
-      "url": "https://github.com/Kevinrua2003/events-decoration-front",
+      "url": "https://events-decoration-front.vercel.app/",
       "github": "https://github.com/Kevinrua2003/events-decoration-front",
       "image": "/projects/events-decoration.png",
       "stack": {

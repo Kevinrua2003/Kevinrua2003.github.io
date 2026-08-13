@@ -2,10 +2,11 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import astroIcon from 'astro-icon';
-import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://kevinrua2003.github.io',
+  base: '/portfolio/',
   integrations: [
     tailwind(),
     astroIcon({
@@ -16,7 +17,4 @@ export default defineConfig({
       },
     }),
   ],
-  output: 'server',
-  adapter: vercel(),
-  
 });
