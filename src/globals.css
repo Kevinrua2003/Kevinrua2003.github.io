@@ -40,21 +40,6 @@
   body {
     @apply bg-skin-fill text-skin-base font-sans;
     -webkit-font-smoothing: antialiased;
-
-    .c-cursor {
-      position: fixed;
-      z-index: 999999999;
-      pointer-events: none;
-      border-radius: 200px;
-      @apply bg-skin-hue/20;
-    }
-  }
-
-  /* Custom cursor hides the native one only while it is active (toggled by JS).
-     This guarantees a visible cursor as fallback if the script fails. */
-  html.cursor-hidden,
-  html.cursor-hidden * {
-    cursor: none !important;
   }
 
   .content-visibility-auto {
