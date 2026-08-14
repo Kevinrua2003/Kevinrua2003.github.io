@@ -24,11 +24,12 @@ const marqueeSkills = [...skills, ...skills];
 
       <div class="flex w-max gap-4 animate-marquee hover:[animation-play-state:paused] py-1">
         {
-          marqueeSkills.map((skill) => {
+          marqueeSkills.map((skill, index) => {
             const iconColor = skill.color || '#3b82f6';
             return (
               <div
                 data-ccursor="lift"
+                aria-hidden={index >= skills.length}
                 class="flex items-center gap-2.5 rounded-xl border border-skin-hue/20 bg-skin-fill/90 px-4 py-2 text-xs font-semibold text-skin-base shadow-xs whitespace-nowrap shrink-0 transition-transform hover:scale-105"
               >
                 {skill.icon && (

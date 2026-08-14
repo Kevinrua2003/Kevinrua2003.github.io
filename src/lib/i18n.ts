@@ -109,6 +109,7 @@ export interface UIStrings {
     siteName: (name: string) => string;
     ogLocale: string;
     htmlLang: string;
+    skipToContent: string;
   };
 }
 
@@ -142,7 +143,7 @@ const UI: Record<LangCode, UIStrings> = {
       placeholderName: 'John Doe',
       placeholderEmail: 'john@example.com',
       placeholderSubject: 'Project inquiry / Feedback',
-      placeholderMessage: 'Write your message here...',
+      placeholderMessage: 'Write your message here…',
     },
     skills: {
       all: 'All',
@@ -222,6 +223,7 @@ const UI: Record<LangCode, UIStrings> = {
       siteName: (name) => `${name}'s Portfolio`,
       ogLocale: 'en_US',
       htmlLang: 'en',
+      skipToContent: 'Skip to content',
     },
   },
   es: {
@@ -253,7 +255,7 @@ const UI: Record<LangCode, UIStrings> = {
       placeholderName: 'Tu nombre',
       placeholderEmail: 'tu.correo@ejemplo.com',
       placeholderSubject: 'Consulta sobre un proyecto / Propuesta',
-      placeholderMessage: 'Escribe tu mensaje aquí...',
+      placeholderMessage: 'Escribe tu mensaje aquí…',
     },
     skills: {
       all: 'Todas',
@@ -333,6 +335,7 @@ const UI: Record<LangCode, UIStrings> = {
       siteName: (name) => `Portafolio de ${name}`,
       ogLocale: 'es_ES',
       htmlLang: 'es',
+      skipToContent: 'Saltar al contenido',
     },
   },
 };

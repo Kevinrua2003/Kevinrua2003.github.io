@@ -193,7 +193,7 @@
       ],
       "url": "https://e-shop-frontend-mu.vercel.app/",
       "github": "https://github.com/Kevinrua2003/e-shop_frontend",
-      "image": "/projects/e-shop.png",
+      "image": "/projects/e-shop.webp",
       "stack": {
         "Next.js": "simple-icons:nextdotjs",
         "React": "simple-icons:react",
@@ -216,7 +216,7 @@
       ],
       "url": "https://events-decoration-front.vercel.app/",
       "github": "https://github.com/Kevinrua2003/events-decoration-front",
-      "image": "/projects/events-decoration.png",
+      "image": "/projects/events-decoration.webp",
       "stack": {
         "Next.js": "simple-icons:nextdotjs",
         "React": "simple-icons:react",

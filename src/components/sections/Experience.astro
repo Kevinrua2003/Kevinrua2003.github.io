@@ -29,7 +29,7 @@ const showLess = ui.experience.showLess
       const workedDatetime = `P${workedYears}Y${workedMonths}M`
       return (
         <li class="relative print:py-2">
-          <div data-expanded="false" class="group relative grid pb-1 print:pb-0 transition-all print:grid-cols-1 print:gap-1 sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
+          <div data-expanded="false" class="group relative grid pb-1 print:pb-0 transition-[opacity] print:grid-cols-1 print:gap-1 sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 expand-container">
             <div class="relative mt-1 text-xs font-semibold sm:col-span-2">
               <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
               <time datetime={workedDatetime} data-title={workedDatetime} class="flex mt-1 text-skin-strong print:hidden">{workedTime}</time>
@@ -88,7 +88,7 @@ const showLess = ui.experience.showLess
                 )}
                 </div>
 
-                <button data-ccursor="lift" data-show-more={showMore} data-show-less={showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
+                <button data-ccursor="lift" data-show-more={showMore} data-show-less={showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
                   <span class="expand-text">{showMore}</span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>

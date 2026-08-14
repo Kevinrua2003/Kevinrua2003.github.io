@@ -16,7 +16,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
 
 <div
   aria-label={ui.options.aria}
-  class="flex flex-row items-center w-full rounded-3xl p-3 gap-2 transition-all rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
+  class="flex flex-row items-center w-full rounded-3xl p-3 gap-2 transition-colors rotate-0 bg-skin-muted sm:bg-skin-button-muted sm:hover:bg-skin-muted print:hidden"
 >
   <div class="flex flex-row items-center justify-evenly gap-2 flex-1">
     <button
@@ -59,7 +59,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
             name={icon}
             width={22}
             height={22}
-            class='sm:grayscale sm:group-hover/social:grayscale-0 transition-all'
+            class='sm:grayscale sm:group-hover/social:grayscale-0 transition-[filter]'
             style={`color: ${color};`}
             aria-label={network}
           />

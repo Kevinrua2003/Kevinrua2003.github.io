@@ -15,7 +15,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
 ---
 
 <Section id="contact" className={className} title={ui.sections.contact} eyebrow={"//"}>
-  <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-skin-button-muted/50 p-6 shadow-sm ring-skin-muted sm:hover:ring-skin-hue/50 transition-all duration-250 ease-in-out">
+  <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-skin-button-muted/50 p-6 shadow-sm ring-skin-muted sm:hover:ring-skin-hue/50 transition-[box-shadow] duration-250 ease-in-out">
     <form
       id="contact-form"
       action="https://api.web3forms.com/submit"
@@ -39,9 +39,10 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
             type="text"
             id="contact-name"
             name="name"
+            autocomplete="name"
             required
             placeholder={ui.contact.placeholderName}
-            class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-all"
+            class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-colors"
           />
         </div>
 
@@ -53,9 +54,10 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
             type="email"
             id="contact-email"
             name="email"
+            autocomplete="email"
             required
             placeholder={ui.contact.placeholderEmail}
-            class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-all"
+            class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-colors"
           />
         </div>
       </div>
@@ -70,7 +72,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
           name="subject"
           required
           placeholder={ui.contact.placeholderSubject}
-          class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-all"
+          class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-colors"
         />
       </div>
 
@@ -84,7 +86,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
           rows="4"
           required
           placeholder={ui.contact.placeholderMessage}
-          class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-all resize-y min-h-24"
+          class="w-full rounded-xl bg-skin-fill/70 border border-skin-hue/20 px-3.5 py-2.5 text-sm text-skin-base placeholder:text-skin-muted/50 focus:border-skin-hue focus:outline-none focus:ring-1 focus:ring-skin-hue transition-colors resize-y min-h-24"
         ></textarea>
       </div>
 
@@ -92,7 +94,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
         <button
           type="submit"
           id="contact-submit"
-          class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-skin-button-accent hover:bg-skin-button-accent-hover px-6 py-2.5 font-mono text-sm font-semibold text-white shadow-md hover:shadow-lg transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue focus-visible:ring-offset-2"
+          class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-skin-button-accent hover:bg-skin-button-accent-hover px-6 py-2.5 font-mono text-sm font-semibold text-white shadow-md hover:shadow-lg transition-[background-color,box-shadow,transform] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue focus-visible:ring-offset-2"
         >
           <Icon name="ri:send-plane-fill" width={18} height={18} />
           <span id="submit-text">{ui.contact.send}</span>
@@ -100,14 +102,14 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
 
         <a
           href={`mailto:${email}`}
-          class="text-xs font-mono text-skin-muted hover:text-skin-hue transition-all flex items-center gap-1.5"
+          class="text-xs font-mono text-skin-muted hover:text-skin-hue transition-colors flex items-center gap-1.5"
         >
           <Icon name="mdi:email-outline" width={16} height={16} />
           <span>{email}</span>
         </a>
       </div>
 
-      <div id="contact-status" class="hidden text-sm font-mono text-center p-3 rounded-xl"></div>
+      <div id="contact-status" role="status" aria-live="polite" class="hidden text-sm font-mono text-center p-3 rounded-xl"></div>
     </form>
   </div>
 </Section>
@@ -138,7 +140,7 @@ const web3FormsAccessKey = import.meta.env.WEB3FORMS_ACCESS_KEY || import.meta.e
 
       if (submitBtn && submitText) {
         submitBtn.disabled = true;
-        submitText.textContent = form.dataset.sending || '...';
+        submitText.textContent = form.dataset.sending || '…';
       }
 
       try {

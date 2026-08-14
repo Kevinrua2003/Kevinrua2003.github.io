@@ -28,9 +28,10 @@ const ui: UIStrings = getUI(lang);
 const { name, label, url } = data.basics;
 ---
 
-<Layout lang={lang} data={data} ui={ui} title={`${name} | ${label} | ${new URL(url).host}`}>
+<Layout lang={lang} data={data} ui={ui} title={`${name} | ${label}`}>
   <HeaderNav ui={ui} />
   <main
+    id="main"
     class="relative grid h-full max-w-fit gap-12 p-8 pt-20 md:pt-24 max-sm:py-20 md:min-h-screen md:grid-cols-6 md:p-16 xl:gap-24 text-skin-base print:gap-4 min-w-0"
   >
     <div

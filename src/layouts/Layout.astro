@@ -2,6 +2,7 @@
 import '../globals.css';
 import type { CV } from "@/lib/cv-types";
 import type { UIStrings, LangCode } from "@/lib/i18n";
+import { LANGS, DEFAULT_LANG } from "@/lib/i18n";
 import BackgroundArt from '@/components/BackgroundArt.astro';
 
 interface Props {
@@ -50,7 +51,6 @@ const structuredData = {
   "alumniOf": CV.education?.[0]?.institution,
   "knowsLanguage": CV.languages?.map(lang => lang.language),
   "sameAs": CV.basics.profiles.map(profile => profile.url),
-  "image": image,
   "description": detailedDescription,
   "address": {
     "@type": "PostalAddress",
@@ -63,7 +63,8 @@ const structuredData = {
     "@type": "Organization",
     "name": work.name,
     "position": work.position
-  }))
+  })),
+  "image": absoluteImage
 };
 
 const breadcrumbSchema = {
@@ -118,7 +119,6 @@ const breadcrumbSchema = {
     
     <!-- Favicon -->
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} type="image/x-icon"/>
-    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.webp`} />
     
     <!-- Preload critical assets -->
     <link rel="preload" as="image" href={`${import.meta.env.BASE_URL}${image.replace(/^\//, '')}`} />
@@ -145,6 +145,15 @@ const breadcrumbSchema = {
     <meta name="theme-color" content="#3b82f6" />
     <meta name="referrer" content="no-referrer" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Hreflang / language alternates -->
+    {
+      LANGS.map((l) => (
+        <link rel="alternate" hreflang={l.code} href={`${url.replace(/\/$/, "")}/${l.code}/`} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={`${url.replace(/\/$/, "")}/${DEFAULT_LANG}/`} />
     
     <!-- Structured Data -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
@@ -153,6 +162,9 @@ const breadcrumbSchema = {
     {CV?.analyticsCode && <script is:inline src={CV.analyticsCode} />}
   </head>
   <body class="relative bg-skin-fill font-sans">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-skin-fill focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-skin-hue focus:ring-2 focus:ring-skin-hue print:hidden">
+      {ui.seo.skipToContent ?? 'Skip to content'}
+    </a>
     <div class="absolute top-0 -z-10 h-full w-full print:hidden">
       <div class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"></div>
     </div>

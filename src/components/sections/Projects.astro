@@ -19,11 +19,11 @@ const { projects = [] } = CV;
         ({ url, description, highlights, name, isActive, github, image, stack }) => {
           return (
             <div
-              class="group relative flex min-h-80 flex-col justify-between rounded-2xl bg-skin-button-muted/50 p-5 shadow-sm ring-skin-muted transition-all duration-200 ease-out hover:shadow-lg hover:shadow-skin-hue/10 hover:ring-skin-hue/60 min-w-0"
+              class="group relative flex min-h-80 flex-col justify-between rounded-2xl bg-skin-button-muted/50 p-5 shadow-sm ring-skin-muted transition-[box-shadow,ring-color] duration-200 ease-out hover:shadow-lg hover:shadow-skin-hue/10 hover:ring-skin-hue/60 min-w-0"
             >
               <div class="flex flex-col gap-2">
                 {image && (
-                  <div class="relative aspect-video w-full overflow-hidden rounded-xl ring-1 ring-skin-hue/15 transition-all duration-300 group-hover:ring-skin-hue/40">
+                  <div class="relative aspect-video w-full overflow-hidden rounded-xl ring-1 ring-skin-hue/15 transition-[box-shadow] duration-300 group-hover:ring-skin-hue/40">
                     <img
                       src={import.meta.env.BASE_URL + image.replace(/^\//, "")}
                       alt={ui.projects.imageAlt(name)}
@@ -41,7 +41,7 @@ const { projects = [] } = CV;
                     <div class="flex items-center gap-[6px] min-w-0">
                       {isActive ? (
                         <a
-                          class="group flex items-center gap-[6px] text-lg font-semibold decoration-dotted underline-offset-[5px] hover:text-skin-hue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm transition-all min-w-0"
+                          class="group flex items-center gap-[6px] text-lg font-semibold decoration-dotted underline-offset-[5px] hover:text-skin-hue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm transition-colors min-w-0"
                           href={url}
                           title={ui.projects.view(name)}
                           target="_blank"
@@ -78,7 +78,7 @@ const { projects = [] } = CV;
                 <div data-expanded="false" class="group/expand relative flex flex-col expand-container">
                   <div class="after:from-[color-mix(in_srgb,rgb(var(--color-button-muted))_50%,rgb(var(--color-fill)))] after:to-transparent flex relative flex-col print:!h-auto gap-4 print:gap-2 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full print:after:hidden after:h-12 after:content-[''] h-16 group-data-[expanded=true]/expand:after:hidden group-data-[expanded=true]/expand:h-auto overflow-hidden duration-200 ease-out">
                     <div class="flex flex-col gap-1">
-                      <h4 class="print:font-bold print:pt-1" data-ccursor="lift">{ui.projects.highlights}</h4>
+                      <h3 class="print:font-bold print:pt-1" data-ccursor="lift">{ui.projects.highlights}</h3>
                       <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 text-sm">
                         {highlights.map((highlight) => {
                           return <li data-ccursor class="break-words leading-relaxed">{highlight}</li>;
@@ -86,7 +86,7 @@ const { projects = [] } = CV;
                       </ul>
                     </div>
                   </div>
-                  <button data-ccursor="lift" data-show-more={ui.projects.showMore} data-show-less={ui.projects.showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-all hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
+                  <button data-ccursor="lift" data-show-more={ui.projects.showMore} data-show-less={ui.projects.showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
                     <span class="expand-text">{ui.projects.showMore}</span>
                     <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]/expand:rotate-180" width={24} height={24}></Icon>
                   </button>
@@ -99,7 +99,7 @@ const { projects = [] } = CV;
                     <li data-ccursor="lift" class="bg-skin-button-accent/10 border-skin-hue/25 text-skin-strong print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm group/stack">
                       {icon &&
                         <span class="flex gap-1 items-center">
-                          <Icon name={icon} width={16} height={16} /> <span class="group-hover/stack:text-skin-hue transition-all duration-200">{label}</span>
+                          <Icon name={icon} width={16} height={16} /> <span class="group-hover/stack:text-skin-hue transition-colors duration-200">{label}</span>
                         </span>
                       }
                     </li>
