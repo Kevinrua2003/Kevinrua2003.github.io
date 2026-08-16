@@ -5,7 +5,6 @@ const { className, title, eyebrow, id } = Astro.props;
 <section id={id} class:list={["flex flex-col gap-4 print:gap-0 scroll-mt-20", className]}>
 	{title && (
 		<h2
-			data-ccursor="lift"
 			class="relative flex w-max max-w-full items-center gap-3 pb-4 text-2xl font-bold tracking-tight print:gap-1 print:pb-0 print:text-xl print:font-extrabold"
 		>
 			{eyebrow && <span aria-hidden="true" class="font-mono text-sm sm:text-base font-medium text-skin-hue print:hidden">{eyebrow}</span>}

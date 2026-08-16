@@ -9,16 +9,15 @@ A bilingual (English / Spanish) personal portfolio built with Astro, TypeScript,
 - **Multiple sections:** Hero, About, Experience, Education, Skills, Projects, and Contact.
 - **Contact form:** Powered by [Web3Forms](https://web3forms.com), with an automatic `mailto:` fallback when no access key is configured.
 - **Animated background:** Canvas-based animation (fractal branches + aurora gradient blobs) with an edge mask, theme-adaptive colors, and `prefers-reduced-motion` support.
-- **Custom cursor:** A context-aware custom cursor with hover modes.
-- **Responsive design:** Works on all devices, with dark / light themes.
+- **Responsive design:** Works on all devices, with dark / light themes and a native cursor.
 - **SEO-ready:** Sitemap, `robots.txt`, and Open Graph metadata.
 
 ## Tech Stack
 
-- **Astro 5** (SSR, `output: 'server'`) — the web framework
+- **Astro 5** (static output) — the web framework
 - **TypeScript** — type safety and developer experience
 - **Tailwind CSS** — styling
-- **@astrojs/vercel** — serverless deployment on Vercel
+- **GitHub Pages** — static deployment via GitHub Actions
 - **astro-icon + Iconify** — icons
 - **jsPDF + html2canvas-pro** — PDF generation for the CV
 - **docx + file-saver** — DOCX generation for the CV
@@ -44,7 +43,7 @@ A bilingual (English / Spanish) personal portfolio built with Astro, TypeScript,
 
 ### Environment Variables
 
-Create a `.env` file in the project root (optional — the contact form falls back to `mailto:` when the key is missing). See `.env.example`:
+Create a `.env` file in the project root (optional — the contact form falls back to `mailto:` when the key is missing). In CI it is injected from the GitHub Actions secret `WEB3FORMS_ACCESS_KEY` (see `.github/workflows/deploy.yml`). See `.env.example`:
 
 ```
 WEB3FORMS_ACCESS_KEY=your_web3forms_access_key_here
@@ -64,7 +63,7 @@ This will start the development server at `http://localhost:4321`.
 pnpm build
 ```
 
-Runs `astro check` for type checking and produces the serverless build for Vercel.
+Runs `astro check` for type checking and produces the static build for GitHub Pages.
 
 ## Personalizing
 
@@ -73,11 +72,11 @@ All site content (name, summary, experience, skills, projects, profiles) lives i
 - **Content:** edit `src/data/en-cv.json` and `src/data/es-cv.json`. Both files must stay in sync (same fields, translated values).
 - **UI strings:** edit `src/lib/i18n.ts` (section labels, buttons, form, SEO).
 - **Photo:** replace `public/pfp.jpg`.
-- **Favicon / branding:** replace `public/favicon.ico` and `public/apple-touch-icon.webp`.
+- **Favicon / branding:** replace `public/favicon.ico`.
 - **Project previews:** add 16:9 images in `public/projects/` and reference them via the `image` field of each project in the JSON.
 - **CV download:** no static file required — the PDF/DOCX buttons generate the CV from the active language's JSON at runtime.
 - **Contact form:** set `WEB3FORMS_ACCESS_KEY` in `.env` to receive messages via Web3Forms.
-- **Domain:** set your real domain in `public/robots.txt` and `public/sitemap.xml` (currently `DOMINIO` placeholders).
+- **Domain:** the live domain is already set in `public/robots.txt`, `public/sitemap.xml`, and `astro.config.mjs` (`kevinrua2003.github.io`). Change it in all three places if you deploy elsewhere.
 
 ## License
 

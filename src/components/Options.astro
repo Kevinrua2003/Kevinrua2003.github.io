@@ -20,7 +20,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
 >
   <div class="flex flex-row items-center justify-evenly gap-2 flex-1">
     <button
-      data-ccursor
+      
       id="themeSwitch"
       type="button"
       aria-label={ui.options.toggleDark}
@@ -32,7 +32,7 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
     {
       otherLangs.map((other) => (
         <a
-          data-ccursor
+          
           href={`${import.meta.env.BASE_URL}${other.code}/`}
           aria-label={`${ui.options.switchLanguage}: ${other.name}`}
           class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
@@ -46,13 +46,11 @@ const otherLangs = LANGS.filter((l) => l.code !== lang)
     {
       profiles && profiles.map(({ network, url, icon, color }) => (
         <a
-          data-ccursor
           class="flex items-center justify-center rounded-md p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue"
           href={url}
           target="_blank"
           rel="noreferrer noopener"
           aria-label={ui.hero.opensInNewTab(network)}
-          data-umami-event={`${network} click`}
           id={network}
         >
           <Icon

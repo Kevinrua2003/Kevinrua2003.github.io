@@ -37,7 +37,7 @@ const { projects = [] } = CV;
                 )}
                 <div class='relative z-10 flex items-center justify-between gap-2 min-w-0'>
                   <div class="flex items-center gap-2 min-w-0">
-                    <Icon data-ccursor="lift" name="mdi:folder-outline" class="size-4 shrink-0" />
+                    <Icon  name="mdi:folder-outline" class="size-4 shrink-0" />
                     <div class="flex items-center gap-[6px] min-w-0">
                       {isActive ? (
                         <a
@@ -59,7 +59,6 @@ const { projects = [] } = CV;
 
                   {github && (
                     <a
-                      data-ccursor="lift"
                       href={github}
                       title={ui.projects.viewGithub(name)}
                       aria-label={ui.projects.viewGithub(name)}
@@ -72,31 +71,31 @@ const { projects = [] } = CV;
                   )}
                 </div>
 
-                <p data-ccursor="noPadding" class='relative z-10 py-2 text-sm text-skin-base leading-relaxed break-words'>
+                <p  class='relative z-10 py-2 text-sm text-skin-base leading-relaxed break-words'>
                   {description}
                 </p>
                 <div data-expanded="false" class="group/expand relative flex flex-col expand-container">
                   <div class="after:from-[color-mix(in_srgb,rgb(var(--color-button-muted))_50%,rgb(var(--color-fill)))] after:to-transparent flex relative flex-col print:!h-auto gap-4 print:gap-2 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full print:after:hidden after:h-12 after:content-[''] h-16 group-data-[expanded=true]/expand:after:hidden group-data-[expanded=true]/expand:h-auto overflow-hidden duration-200 ease-out">
                     <div class="flex flex-col gap-1">
-                      <h3 class="print:font-bold print:pt-1" data-ccursor="lift">{ui.projects.highlights}</h3>
+                      <h3 class="print:font-bold print:pt-1" >{ui.projects.highlights}</h3>
                       <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 text-sm">
                         {highlights.map((highlight) => {
-                          return <li data-ccursor class="break-words leading-relaxed">{highlight}</li>;
+                          return <li  class="break-words leading-relaxed">{highlight}</li>;
                         })}
                       </ul>
                     </div>
                   </div>
-                  <button data-ccursor="lift" data-show-more={ui.projects.showMore} data-show-less={ui.projects.showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
+                  <button  data-show-more={ui.projects.showMore} data-show-less={ui.projects.showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
                     <span class="expand-text">{ui.projects.showMore}</span>
                     <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]/expand:rotate-180" width={24} height={24}></Icon>
                   </button>
                 </div>
               </div>
-              
+
               {stack && (
                 <ul class="flex print:hidden flex-wrap gap-2 mt-4 pt-3 border-t border-skin-hue/10" aria-label={ui.projects.technologies}>
                   {Object.entries(stack).map(([label, icon]) => (
-                    <li data-ccursor="lift" class="bg-skin-button-accent/10 border-skin-hue/25 text-skin-strong print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm group/stack">
+                    <li  class="bg-skin-button-accent/10 border-skin-hue/25 text-skin-strong print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm group/stack">
                       {icon &&
                         <span class="flex gap-1 items-center">
                           <Icon name={icon} width={16} height={16} /> <span class="group-hover/stack:text-skin-hue transition-colors duration-200">{label}</span>

@@ -40,7 +40,7 @@ const showLess = ui.experience.showLess
                   <span class="inline-flex items-center text-lg print:text-base leading-tight group/link" aria-label={`${position} - ${name}`}>
                   <span>{position} <span>@</span>
                   {url ? (
-                    <a data-ccursor class="text-skin-hue inline-block w-max rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue" href={url} title={ui.experience.view(name)} target="_blank">{name}</a>
+                    <a  class="text-skin-hue inline-block w-max rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue" href={url} title={ui.experience.view(name)} target="_blank">{name}</a>
                   ) : (
                     <span>{name}</span>
                   )}
@@ -61,14 +61,14 @@ const showLess = ui.experience.showLess
               <div class="mt-4  print:gap-0 flex flex-col gap-4 print:text-xs text-sm">
                 {summary && (
                   <div class="flex flex-col gap-1">
-                    <h4 class="print:font-bold" data-ccursor="lift">{ui.experience.summary}</h4>
+                    <h4 class="print:font-bold" >{ui.experience.summary}</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {Array.isArray(summary) ? (
                         summary.map(item => (
                           {item}
                         ))
                       ) : (
-                        <li data-ccursor>{summary}</li>
+                        <li >{summary}</li>
                       )}
                     </ul>
                   </div>
@@ -78,17 +78,17 @@ const showLess = ui.experience.showLess
                 <div class="after:from-skin-fill after:to-transparent flex relative flex-col print:!h-auto gap-4 print:gap-2 after:bg-gradient-to-t after:absolute after:bottom-0 after:w-full print:after:hidden after:h-12 after:content-[''] h-16 group-data-[expanded=true]:after:hidden group-data-[expanded=true]:h-auto overflow-hidden duration-200 ease-out">
                 {responsibilities && (
                   <div class="flex flex-col gap-1">
-                    <h4 class="print:font-bold print:pt-1" data-ccursor="lift">{ui.experience.responsibilities}</h4>
+                    <h4 class="print:font-bold print:pt-1" >{ui.experience.responsibilities}</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
-                        <li data-ccursor>{responsibility}</li>
+                        <li >{responsibility}</li>
                       ))}
                     </ul>
                   </div>
                 )}
                 </div>
 
-                <button data-ccursor="lift" data-show-more={showMore} data-show-less={showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
+                <button  data-show-more={showMore} data-show-less={showLess} aria-expanded="false" class="print:hidden group/more w-fit items-center justify-center gap-1.5 text-xs underline text-skin-muted transition-colors hover:text-skin-hue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skin-hue rounded-sm flex expand-button">
                   <span class="expand-text">{showMore}</span>
                   <Icon name="ri:arrow-up-s-line" class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out group-data-[expanded=true]:rotate-180" width={24} height={24}></Icon>
                 </button>
@@ -96,7 +96,7 @@ const showLess = ui.experience.showLess
 
                 <ul class="flex print:hidden flex-wrap gap-2" aria-label={ui.experience.technologies}>
                   {skills && Object.entries(skills).map(([label, icon]) =>  (
-                      <li data-ccursor="lift" class="bg-skin-button-accent/10 border-skin-hue/25 text-skin-strong print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm select-none">
+                      <li  class="bg-skin-button-accent/10 border-skin-hue/25 text-skin-strong print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs backdrop-blur-sm select-none">
                         {icon && <Icon name={icon} width={16} height={16} />} <span>{label}</span>
                       </li>
                     )

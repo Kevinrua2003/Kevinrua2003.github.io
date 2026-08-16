@@ -23,7 +23,6 @@ const canonical = `${siteBase}${DEFAULT_LANG}/`
     <main class="flex min-h-screen w-full flex-col items-center justify-center gap-6 p-8 text-center">
       <div class="flex h-12 w-12 items-center justify-center rounded-full border-4 border-skin-muted border-t-skin-hue animate-spin" role="status" aria-label="loading"></div>
       <div class="flex flex-col items-center gap-1">
-        <h1 class="text-xl font-bold tracking-tight">{cv.basics.name}</h1>
         <p class="font-mono text-sm text-skin-muted">{ui.seo.skipToContent}</p>
       </div>
       <a href={target} class="text-xs font-mono text-skin-muted underline decoration-dotted underline-offset-4 hover:text-skin-hue transition-colors">
@@ -31,7 +30,7 @@ const canonical = `${siteBase}${DEFAULT_LANG}/`
       </a>
     </main>
     <script is:inline>
-      window.location.replace({redirect: target});
+      window.location.replace(target);
     </script>
   </body>
 </html>
