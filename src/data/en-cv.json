@@ -4,7 +4,7 @@
     "name": "Kevin Rúa González",
     "label": "Software Engineer",
     "image": "/pfp.jpg",
-    "email": "kevinrua2003@email.com",
+    "email": "kevinrua2003@gmail.com",
     "url": "https://kevinrua2003.github.io/",
     "summary": "Software Engineer and Full Stack Developer with a mindset focused on technical excellence. I specialize in designing clean architectures and developing end-to-end platforms, ranging from interactive interfaces to backend services and automation systems. I excel at transforming complex requirements into maintainable software and staying committed to continuous professional growth and learning.",
     "location": {
@@ -25,11 +25,35 @@
   },
   "work": [
     {
+      "name": "Centro de Inmunología Molecular (CIM)",
+      "position": "Full Stack Developer",
+      "url": "https://www.cim.cu/",
+      "startDate": "2026-10-01",
+      "endDate": null,
+      "summary": "Full stack development of a multi-tenant platform for managing, prioritizing and measuring the impact of science and innovation initiatives.",
+      "responsibilities": [
+        "Develop the platform's frontend and backend across the full initiative lifecycle: calls, review, execution and prioritization.",
+        "Implement the multi-tenant architecture, two-factor authentication (2FA) and role-based permissions, keeping each organization's data isolated.",
+        "Build the data layer and deployment infrastructure with PostgreSQL, S3/MinIO file storage and Docker containers."
+      ],
+      "location": "Havana, Cuba",
+      "location_type": "Hybrid",
+      "skills": {
+        "Next.js": "simple-icons:nextdotjs",
+        "Strapi": "simple-icons:strapi",
+        "NextAuth": "mdi:shield-account",
+        "2FA": "mdi:two-factor-authentication",
+        "PostgreSQL": "simple-icons:postgresql",
+        "Docker": "simple-icons:docker",
+        "MinIO": "simple-icons:minio"
+      }
+    },
+    {
       "name": "AICA Pharmaceutical Laboratories",
       "position": "Software Developer",
       "url": "https://www.aica.cu/",
       "startDate": "2025-11-01",
-      "endDate": null,
+      "endDate": "2026-09-30",
       "summary": "Development and implementation of an intelligent demand forecasting system for pharmaceuticals using Machine Learning and process automation.",
       "responsibilities": [
         "Designed and implemented data analysis workflows and trained Machine Learning models in KNIME based on historical pharmaceutical data.",
@@ -168,6 +192,20 @@
       "color": "#131313FF",
       "level": "Avanzado",
       "keywords": ["DevOps", "Containerization"]
+    },
+    {
+      "name": "NextAuth",
+      "icon": "mdi:shield-account",
+      "color": "#6D4AFF",
+      "level": "Advanced",
+      "keywords": ["Auth", "Security", "2FA"]
+    },
+    {
+      "name": "MinIO",
+      "icon": "simple-icons:minio",
+      "color": "#C72E49",
+      "level": "Advanced",
+      "keywords": ["Storage", "S3", "DevOps"]
     }
   ],
   "languages": [

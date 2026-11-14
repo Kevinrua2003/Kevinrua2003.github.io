@@ -4,7 +4,7 @@
     "name": "Kevin Rúa González",
     "label": "Ingeniero de Software",
     "image": "/pfp.jpg",
-    "email": "kevinrua2003@email.com",
+    "email": "kevinrua2003@gmail.com",
     "url": "https://kevinrua2003.github.io/",
     "summary": "Ingeniero de software y Desarrollador Full Stack con mentalidad orientada a la excelencia técnica. Me especializo en diseñar arquitecturas limpias y desarrollar plataformas integrales, desde interfaces interactivas hasta servicios backend y sistemas de automatización. Destaco por mi capacidad para transformar requerimientos complejos en software mantenible y mi compromiso constante con la superación profesional y el aprendizaje de nuevas tecnologías.",
     "location": {
@@ -25,11 +25,35 @@
   },
   "work": [
     {
+      "name": "Centro de Inmunología Molecular (CIM)",
+      "position": "Desarrollador Full Stack",
+      "url": "https://www.cim.cu/",
+      "startDate": "2026-10-01",
+      "endDate": null,
+      "summary": "Desarrollo full stack de una plataforma multi-tenant para la gestión, priorización y medición del impacto de iniciativas de ciencia e innovación.",
+      "responsibilities": [
+        "Desarrollo del frontend y del backend de la plataforma, cubriendo el ciclo de vida completo de las iniciativas: convocatorias, revisión, ejecución y priorización.",
+        "Implementación de la arquitectura multi-tenant, autenticación con doble factor (2FA) y permisos por roles, garantizando el aislamiento de la información entre entidades.",
+        "Construcción de la capa de datos y la infraestructura de despliegue con PostgreSQL, almacenamiento de archivos en S3/MinIO y contenedores Docker."
+      ],
+      "location": "La Habana, Cuba",
+      "location_type": "Híbrido",
+      "skills": {
+        "Next.js": "simple-icons:nextdotjs",
+        "Strapi": "simple-icons:strapi",
+        "NextAuth": "mdi:shield-account",
+        "2FA": "mdi:two-factor-authentication",
+        "PostgreSQL": "simple-icons:postgresql",
+        "Docker": "simple-icons:docker",
+        "MinIO": "simple-icons:minio"
+      }
+    },
+    {
       "name": "Laboratorios Farmacéuticos AICA",
       "position": "Desarrollador de Software",
       "url": "https://www.aica.cu/",
       "startDate": "2025-11-01",
-      "endDate": null,
+      "endDate": "2026-09-30",
       "summary": "Desarrollo e implementación de un sistema inteligente para la predicción de la demanda farmacéutica mediante Machine Learning y automatización de procesos.",
       "responsibilities": [
         "Diseño e implementación de flujos de análisis de datos y entrenamiento de modelos de Machine Learning en KNIME a partir del historial de fármacos.",
@@ -168,6 +192,20 @@
       "color": "#131313FF",
       "level": "Avanzado",
       "keywords": ["DevOps", "Containerization"]
+    },
+    {
+      "name": "NextAuth",
+      "icon": "mdi:shield-account",
+      "color": "#6D4AFF",
+      "level": "Avanzado",
+      "keywords": ["Auth", "Seguridad", "2FA"]
+    },
+    {
+      "name": "MinIO",
+      "icon": "simple-icons:minio",
+      "color": "#C72E49",
+      "level": "Avanzado",
+      "keywords": ["Storage", "S3", "DevOps"]
     }
   ],
   "languages": [

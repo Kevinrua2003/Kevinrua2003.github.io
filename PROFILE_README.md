@@ -34,9 +34,15 @@ Software Engineer and Full Stack Developer based in Havana, Cuba, focused on tec
     <td align="center"><sub><b>Location</b></sub></td>
   </tr>
   <tr>
+    <td align="center"><a href="https://www.cim.cu/"><b>Centro de Inmunología Molecular (CIM)</b></a></td>
+    <td align="center">Full Stack Developer</td>
+    <td align="center">2026-10 — Present</td>
+    <td align="center">Havana, Cuba</td>
+  </tr>
+  <tr>
     <td align="center"><a href="https://www.aica.cu/"><b>AICA Pharmaceutical Laboratories</b></a></td>
     <td align="center">Software Developer</td>
-    <td align="center">2025-11 — Present</td>
+    <td align="center">2025-11 — 2026-09</td>
     <td align="center">Havana, Cuba</td>
   </tr>
 </table>
@@ -55,6 +61,21 @@ Development and implementation of an intelligent demand forecasting system for p
 </details>
 
 <sub><b>Technologies:</b></sub> `KNIME` `n8n` `REST API` `Machine Learning` `Telegram API`
+
+### <sub>🧬 Full Stack Developer at Centro de Inmunología Molecular (CIM)</sub>
+
+Full stack development of a multi-tenant platform for managing, prioritizing and measuring the impact of science and innovation initiatives.
+
+<details>
+  <summary><b>View responsibilities</b></summary>
+
+- 🧩 Develop the platform's frontend and backend across the full initiative lifecycle: calls, review, execution and prioritization
+- 🔐 Implement the multi-tenant architecture, two-factor authentication (2FA) and role-based permissions, keeping each organization's data isolated
+- 🐳 Build the data layer and deployment infrastructure with PostgreSQL, S3/MinIO file storage and Docker containers
+
+</details>
+
+<sub><b>Technologies:</b></sub> `Next.js` `Strapi` `NextAuth` `2FA` `PostgreSQL` `Docker` `MinIO`
 
 ---
 
@@ -105,6 +126,7 @@ Development and implementation of an intelligent demand forecasting system for p
     <td><sub><b>Backend</b></sub></td>
     <td align="center">
       <img src="https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white" />&nbsp;
+      <img src="https://img.shields.io/badge/NextAuth-6D4AFF?style=for-the-badge" />&nbsp;
       <img src="https://img.shields.io/badge/Strapi-4945FF?style=for-the-badge&logo=strapi&logoColor=white" />
     </td>
   </tr>
@@ -126,6 +148,7 @@ Development and implementation of an intelligent demand forecasting system for p
     <td><sub><b>DevOps & Tools</b></sub></td>
     <td align="center">
       <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />&nbsp;
+      <img src="https://img.shields.io/badge/MinIO-C72E49?style=for-the-badge&logo=minio&logoColor=white" />&nbsp;
       <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
     </td>
   </tr>
